@@ -1,6 +1,6 @@
 ---
 title: Using VM applications and Azure Policy to deploy applications.
-date: 2023-11-23 12:00:00 -500
+date: 2023-11-23 12:00:00
 categories: [azure, azure policy, applications]
 tags: [azure, policy, applications, compute]
 ---
