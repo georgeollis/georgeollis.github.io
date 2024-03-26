@@ -5,4 +5,4 @@ categories: [azure, virtual wan, azure networking, vwan, azure virtual wan]
 tags: [azure, policy, applications, compute]
 ---
 
-#### Azure Virtual WAN - Understanding Bypass Next Hop IP for workloads within this VNet
+#### Azure Virtual WAN - Understanding Bypass Next Hop IP for workloads within this VNet.
