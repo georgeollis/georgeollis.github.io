@@ -15,9 +15,11 @@ Firstly you will need to open PowerShell; this can be done through the Cloud She
 
 The first set of commands to run will create two variables called $list and $subscriptions.
 
+- $list will create an empty list we will use in the script.
+
+- $subscriptions will return all the subscriptions we will be looping over.
+
 ```powershell
-$list will create an empty list we will use in the script.
-$subscriptions will return all the subscriptions we will be looping over.
 $list = New-Object System.Collections.Generic.List[System.Object]
 $subscriptions = Get-AzSubscription
 ```
