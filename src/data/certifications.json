@@ -1,0 +1,306 @@
+[
+  {
+    "name": "Microsoft Certified: Fabric Data Engineer Associate",
+    "organization": "Microsoft",
+    "issued": "2026-04-01",
+    "expires": "2027-04-01",
+    "credentialId": "420D28F521DA936E",
+    "category": "Data"
+  },
+  {
+    "name": "Microsoft Certified: Agentic AI Business Solutions Architect",
+    "organization": "Microsoft",
+    "issued": "2026-02-01",
+    "expires": "2027-02-01",
+    "credentialId": "F6744C9C2910F9DA",
+    "category": "AI"
+  },
+  {
+    "name": "Microsoft 365 Certified: Copilot and Agent Administration Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2026-02-01",
+    "credentialId": "948E835D73CCC0A9",
+    "category": "AI"
+  },
+  {
+    "name": "Microsoft Certified: AI Transformation Leader",
+    "organization": "Microsoft",
+    "issued": "2026-01-01",
+    "expires": "2027-01-01",
+    "credentialId": "9695365014612C17",
+    "category": "AI"
+  },
+  {
+    "name": "Kubestronaut",
+    "organization": "The Linux Foundation",
+    "issued": "2025-02-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "CKS: Certified Kubernetes Security Specialist",
+    "organization": "The Linux Foundation",
+    "issued": "2025-02-01",
+    "expires": "2027-02-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "KCSA: Kubernetes and Cloud Native Security Associate",
+    "organization": "The Linux Foundation",
+    "issued": "2024-12-01",
+    "expires": "2026-12-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "KCNA: Kubernetes and Cloud Native Associate",
+    "organization": "The Linux Foundation",
+    "issued": "2024-06-01",
+    "expires": "2026-06-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "ICA: Istio Certified Associate",
+    "organization": "The Linux Foundation",
+    "issued": "2024-05-01",
+    "expires": "2026-05-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "Microsoft Certified: Azure Data Scientist Associate",
+    "organization": "Microsoft",
+    "issued": "2024-03-01",
+    "expires": "2027-03-01",
+    "credentialId": "6184F3248DCDB11E",
+    "category": "Data"
+  },
+  {
+    "name": "Microsoft Certified: Azure AI Engineer Associate",
+    "organization": "Microsoft",
+    "issued": "2023-11-01",
+    "expires": "2026-11-01",
+    "credentialId": "B490B059C8CE3F06",
+    "category": "AI"
+  },
+  {
+    "name": "Microsoft Certified: Azure AI Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2023-10-01",
+    "credentialId": "8CFDCC8415497377",
+    "category": "Fundamentals"
+  },
+  {
+    "name": "Microsoft Certified: Endpoint Administrator",
+    "organization": "Microsoft",
+    "issued": "2023-05-01",
+    "expires": "2026-10-01",
+    "credentialId": "MS0990762770",
+    "category": "Identity"
+  },
+  {
+    "name": "Microsoft Certified: Information Protection Administrator Associate",
+    "organization": "Microsoft",
+    "issued": "2023-04-01",
+    "expires": "2024-04-01",
+    "category": "Security"
+  },
+  {
+    "name": "Microsoft Certified: Azure Data Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2023-02-01",
+    "category": "Fundamentals"
+  },
+  {
+    "name": "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2023-01-01",
+    "category": "Fundamentals"
+  },
+  {
+    "name": "Microsoft Certified: DevOps Engineer Expert",
+    "organization": "Microsoft",
+    "issued": "2022-01-01",
+    "expires": "2027-01-01",
+    "credentialId": "7253781FD301A304",
+    "category": "DevOps"
+  },
+  {
+    "name": "Microsoft Certified: Azure Data Engineer Associate",
+    "organization": "Microsoft",
+    "issued": "2022-10-01",
+    "expires": "2026-10-01",
+    "category": "Data"
+  },
+  {
+    "name": "Microsoft Certified: Azure for SAP Workloads Specialty",
+    "organization": "Microsoft",
+    "issued": "2022-11-01",
+    "expires": "2025-11-01",
+    "category": "Specialty"
+  },
+  {
+    "name": "AZ-305: Designing Microsoft Azure Infrastructure Solutions",
+    "organization": "Microsoft",
+    "issued": "2022-11-01",
+    "category": "Expert"
+  },
+  {
+    "name": "Microsoft Certified: Azure Stack Hub Operator Associate (Legacy)",
+    "organization": "Microsoft",
+    "issued": "2022-12-01",
+    "expires": "2023-12-01",
+    "category": "Legacy"
+  },
+  {
+    "name": "CKAD: Certified Kubernetes Application Developer",
+    "organization": "The Linux Foundation",
+    "issued": "2022-10-01",
+    "expires": "2025-10-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "Microsoft Certified: Azure IoT Developer Specialty (Legacy)",
+    "organization": "Microsoft",
+    "issued": "2022-09-01",
+    "expires": "2023-09-01",
+    "category": "Legacy"
+  },
+  {
+    "name": "Microsoft Certified: Azure Cosmos DB Developer Specialty",
+    "organization": "Microsoft",
+    "issued": "2022-08-01",
+    "expires": "2026-08-01",
+    "category": "Data"
+  },
+  {
+    "name": "SC-100: Microsoft Cybersecurity Architect",
+    "organization": "Microsoft",
+    "issued": "2022-05-01",
+    "category": "Security"
+  },
+  {
+    "name": "CKA: Certified Kubernetes Administrator",
+    "organization": "The Linux Foundation",
+    "issued": "2022-07-01",
+    "expires": "2025-07-01",
+    "category": "Kubernetes"
+  },
+  {
+    "name": "Microsoft Certified: Cybersecurity Architect Expert",
+    "organization": "Microsoft",
+    "issued": "2022-06-01",
+    "expires": "2025-06-01",
+    "category": "Security"
+  },
+  {
+    "name": "Microsoft Certified: Azure Support Engineer for Connectivity Specialty",
+    "organization": "Microsoft",
+    "issued": "2022-06-01",
+    "expires": "2025-06-01",
+    "category": "Specialty"
+  },
+  {
+    "name": "Microsoft Certified: Windows Server Hybrid Administrator Associate",
+    "organization": "Microsoft",
+    "issued": "2022-05-01",
+    "expires": "2025-05-01",
+    "category": "Windows"
+  },
+  {
+    "name": "AZ-801: Configuring Windows Server Hybrid Advanced Services",
+    "organization": "Microsoft",
+    "issued": "2022-05-01",
+    "category": "Windows"
+  },
+  {
+    "name": "Microsoft Certified: Security Operations Analyst Associate",
+    "organization": "Microsoft",
+    "issued": "2022-04-01",
+    "expires": "2027-04-01",
+    "category": "Security"
+  },
+  {
+    "name": "AZ-800: Administering Windows Server Hybrid Core Infrastructure",
+    "organization": "Microsoft",
+    "issued": "2022-03-01",
+    "category": "Windows"
+  },
+  {
+    "name": "HashiCorp Certified: Terraform Associate",
+    "organization": "HashiCorp",
+    "issued": "2022-03-01",
+    "credentialId": "7baeb8cf-4aa2-472b-a7da-9ad388fe78ad",
+    "category": "Infrastructure"
+  },
+  {
+    "name": "Microsoft Certified: Azure Database Administrator Associate",
+    "organization": "Microsoft",
+    "issued": "2022-02-01",
+    "expires": "2027-02-01",
+    "category": "Data"
+  },
+  {
+    "name": "Microsoft Certified: Azure Developer Associate",
+    "organization": "Microsoft",
+    "issued": "2021-12-01",
+    "expires": "2026-12-01",
+    "category": "Developer"
+  },
+  {
+    "name": "Microsoft Certified: Azure Virtual Desktop Specialty",
+    "organization": "Microsoft",
+    "issued": "2021-08-01",
+    "expires": "2026-08-01",
+    "category": "Specialty"
+  },
+  {
+    "name": "Microsoft Certified: Azure Security Engineer Associate",
+    "organization": "Microsoft",
+    "issued": "2021-05-01",
+    "expires": "2026-05-01",
+    "category": "Security"
+  },
+  {
+    "name": "Microsoft Certified: Azure Solutions Architect Expert",
+    "organization": "Microsoft",
+    "issued": "2021-04-01",
+    "expires": "2027-04-01",
+    "category": "Expert"
+  },
+  {
+    "name": "AZ-304 Microsoft Azure Architect Design",
+    "organization": "Microsoft",
+    "issued": "2021-04-01",
+    "category": "Expert"
+  },
+  {
+    "name": "AZ-303 Microsoft Azure Architect Technologies",
+    "organization": "Microsoft",
+    "issued": "2021-04-01",
+    "category": "Expert"
+  },
+  {
+    "name": "Microsoft Certified: Azure Administrator Associate",
+    "organization": "Microsoft",
+    "issued": "2021-03-01",
+    "expires": "2027-03-01",
+    "category": "Administrator"
+  },
+  {
+    "name": "Microsoft 365 Certified: Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2021-01-01",
+    "category": "Fundamentals"
+  },
+  {
+    "name": "Microsoft Certified: Azure Fundamentals",
+    "organization": "Microsoft",
+    "issued": "2021-01-01",
+    "category": "Fundamentals"
+  },
+  {
+    "name": "Microsoft Certified: Azure Network Engineer Associate",
+    "organization": "Microsoft",
+    "issued": "2021-11-01",
+    "expires": "2026-11-01",
+    "category": "Networking"
+  }
+]

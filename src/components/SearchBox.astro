@@ -1,0 +1,88 @@
+---
+// Simple search box component
+---
+
+<div class="search-box-wrapper">
+  <form class="search-form" action="/search" method="get">
+    <input
+      type="search"
+      name="q"
+      class="search-input"
+      placeholder="Search posts..."
+      autocomplete="off"
+    />
+    <button type="submit" class="search-button" aria-label="Search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<style>
+  .search-box-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    max-width: 320px;
+    min-width: 100px;
+  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    transition: all 200ms ease;
+    width: 100%;
+  }
+
+  .search-form:focus-within {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    box-shadow: 0 2px 8px rgba(58, 65, 70, 0.08);
+  }
+
+  .search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-size: 0.85rem;
+    outline: none;
+    font-weight: 500;
+  }
+
+  .search-input::placeholder {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .search-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    transition: all 200ms ease;
+    flex-shrink: 0;
+  }
+
+  .search-button:hover {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  .search-button:active {
+    color: var(--accent-strong);
+  }
+</style>
+

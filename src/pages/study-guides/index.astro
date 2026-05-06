@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allGuides = (await getCollection('studyGuides', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Filter to only show index/overview pages
+const guides = allGuides.filter((guide) => guide.slug.endsWith('/index'));
+---
+
+<BaseLayout title="Study Guides | George Ollis" description="Certification study guides and exam preparation materials.">
+  <section class="section-block">
+    <p class="section-label">Study Guides</p>
+    <h1>Exam preparation</h1>
+    <p class="lede">Comprehensive study guides covering exam content, labs, practice questions, and resources.</p>
+
+    <div class="card-grid card-grid-compact">
+      {guides.map((guide) => {
+        const folder = guide.slug.split('/')[0];
+        return (
+          <article class="card">
+            <a class="card-link" href={`/study-guides/${folder}/`}>
+              <p class="card-meta">{guide.data.provider}</p>
+              <h2>{guide.data.title}</h2>
+              <p>{guide.data.description}</p>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>

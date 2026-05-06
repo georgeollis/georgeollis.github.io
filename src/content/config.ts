@@ -14,7 +14,7 @@ const blog = defineCollection({
   })
 });
 
-const certifications = defineCollection({
+const studyGuides = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
@@ -23,8 +23,9 @@ const certifications = defineCollection({
     provider: z.string(),
     examCode: z.string().optional(),
     status: z.enum(['planned', 'in-progress', 'completed']).default('planned'),
+    section: z.enum(['index', 'content', 'labs', 'practice', 'resources', 'notes']).optional(),
     draft: z.boolean().default(false)
   })
 });
 
-export const collections = { blog, certifications };
+export const collections = { blog, studyGuides };

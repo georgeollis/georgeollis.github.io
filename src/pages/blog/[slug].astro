@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <BaseLayout title={`${post.data.title} | George Ollis`} description={post.data.description}>
@@ -19,16 +20,12 @@ const { Content } = await render(post);
     <header class="article-header">
       <p class="section-label">{post.data.date.toLocaleDateString('en-GB')}</p>
       <h1>{post.data.title}</h1>
-      {post.data.tags.length > 0 && (
-        <ul class="tags" aria-label="Tags">
-          {post.data.tags.map((tag: string) => (
-            <li>{tag}</li>
-          ))}
-        </ul>
-      )}
     </header>
-    <div class="prose">
-      <Content />
+    <div class="article-content">
+      <TableOfContents headings={headings} />
+      <div class="prose">
+        <Content />
+      </div>
     </div>
   </article>
 </BaseLayout>

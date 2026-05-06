@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('studyGuides', ({ data }) => !data.draft);
+  
+  // Only create paths for "index" pages (overview)
+  const paths = [];
+  
+  for (const guide of guides) {
+    if (guide.slug.endsWith('/index')) {
+      const folder = guide.slug.split('/')[0];
+      paths.push({
+        params: { cert: folder },
+        props: { cert: folder }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { cert } = Astro.params;
+const guides = await getCollection('studyGuides', ({ data }) => !data.draft);
+
+// Find the overview page for this guide
+const overview = guides.find((g) => g.slug === `${cert}/index`);
+
+if (!overview) {
+  throw new Error(`Study guide not found: ${cert}`);
+}
+
+const { Content } = await render(overview);
+
+// Get all pages for this guide for navigation
+const guidePages = guides
+  .filter((g) => g.slug.startsWith(cert))
+  .sort((a, b) => {
+    const order = ['index', 'content', 'labs', 'practice', 'resources', 'notes'];
+    const aPage = a.slug.split('/')[1]?.replace('.md', '') || 'index';
+    const bPage = b.slug.split('/')[1]?.replace('.md', '') || 'index';
+    return order.indexOf(aPage) - order.indexOf(bPage);
+  });
+---
+
+<BaseLayout title={`${overview.data.title} | George Ollis`} description={overview.data.description}>
+  <article class="article-shell">
+    <header class="article-header">
+      <p class="section-label">{overview.data.provider}</p>
+      <h1>{overview.data.title}</h1>
+      <p class="lede">{overview.data.description}</p>
+      <div class="detail-meta">
+        {overview.data.examCode && <span>Exam: {overview.data.examCode}</span>}
+        <span>Status: {overview.data.status}</span>
+      </div>
+    </header>
+    
+    <!-- Study Guide Navigation -->
+    <nav class="cert-nav">
+      {guidePages.map((page) => {
+        const pageName = page.slug.split('/')[1]?.replace('.md', '') || 'index';
+        const pageTitle = pageName === 'index' ? 'Overview' : pageName.charAt(0).toUpperCase() + pageName.slice(1);
+        const href = pageName === 'index' 
+          ? `/study-guides/${cert}/`
+          : `/study-guides/${cert}/${pageName}/`;
+        
+        return (
+          <a href={href} class="active">
+            {pageTitle}
+          </a>
+        );
+      })}
+    </nav>
+    
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cert-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .cert-nav a {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 0.25rem;
+    background: var(--surface);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 160ms ease;
+  }
+  
+  .cert-nav a:hover,
+  .cert-nav a.active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+</style>

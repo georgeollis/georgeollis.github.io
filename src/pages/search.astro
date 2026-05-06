@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const query = Astro.url.searchParams.get('q') || '';
+---
+
+<BaseLayout title={`Search${query ? ` - ${query}` : ''} | George Ollis`} description="Search blog posts and guides.">
+  <section class="section-block search-results">
+    <p class="section-label">Search</p>
+    <h1>Search</h1>
+
+    <div class="search-info">
+      <p>Pagefind search index is generated at build time. Use the search box in the header to search across all posts and guides.</p>
+      <p><strong>Note:</strong> Search functionality will be available after deployment. During development, browse using the Blog and Study Guides sections.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .search-results {
+    max-width: 800px;
+  }
+
+  .search-info {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  .search-info p {
+    margin: 0.75rem 0;
+    color: var(--muted);
+  }
+
+  .search-info p:first-child {
+    margin-top: 0;
+  }
+
+  .search-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .search-info strong {
+    color: var(--accent);
+  }
+</style>

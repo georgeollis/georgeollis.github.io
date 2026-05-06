@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SearchBox from '../components/SearchBox.astro';
 
 interface Props {
   title?: string;
@@ -53,8 +54,8 @@ const ogImage = new URL(image, Astro.site);
         <a class="wordmark" href="/">George Ollis</a>
         <nav>
           <a href="/blog">Blog</a>
-          <a href="/certifications">Certifications</a>
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Light</button>
+          <a href="/study-guides">Study Guides</a>
+          <a href="/certifications">My Certifications</a>
         </nav>
       </div>
     </header>
@@ -67,31 +68,12 @@ const ogImage = new URL(image, Astro.site);
           <p>© {new Date().getFullYear()} George Ollis</p>
           <div class="footer-links">
             <a href="/blog">Blog</a>
-            <a href="/certifications">Certifications</a>
+            <a href="/study-guides">Study Guides</a>
+            <a href="/certifications">My Certifications</a>
             <a href="/rss.xml">RSS</a>
           </div>
         </div>
       </footer>
     </div>
-    <script>
-      const btn = document.getElementById('theme-toggle');
-      const root = document.documentElement;
-      const setTheme = (dark) => {
-        if (dark) {
-          root.setAttribute('data-theme', 'dark');
-          btn.textContent = 'Dark';
-          localStorage.setItem('theme', 'dark');
-        } else {
-          root.removeAttribute('data-theme');
-          btn.textContent = 'Light';
-          localStorage.setItem('theme', 'light');
-        }
-      };
-      const stored = localStorage.getItem('theme');
-      setTheme(stored === 'dark');
-      btn.addEventListener('click', () => {
-        setTheme(root.getAttribute('data-theme') !== 'dark');
-      });
-    </script>
   </body>
 </html>

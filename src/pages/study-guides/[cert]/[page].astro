@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('studyGuides', ({ data }) => !data.draft);
+  
+  // Build a map of which pages exist for each guide folder
+  const guideFolders = new Map();
+  
+  for (const guide of guides) {
+    const parts = guide.slug.split('/');
+    if (parts.length === 2) {
+      const folder = parts[0];
+      const page = parts[1];
+      
+      if (!guideFolders.has(folder)) {
+        guideFolders.set(folder, []);
+      }
+      guideFolders.get(folder).push(page);
+    }
+  }
+  
+  // Create paths for each guide/page combination that exists
+  const paths = [];
+  for (const [folder, pages] of guideFolders.entries()) {
+    for (const page of pages) {
+      paths.push({
+        params: { cert: folder, page: page },
+        props: { cert: folder, page: page }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { cert, page } = Astro.params;
+const guides = await getCollection('studyGuides', ({ data }) => !data.draft);
+
+// Find the specific guide page
+const guidePage = guides.find((g) => {
+  const folder = g.slug.split('/')[0];
+  const pageName = g.slug.split('/')[1];
+  return folder === cert && pageName === page;
+});
+
+if (!guidePage) {
+  throw new Error(`Study guide page not found: ${cert}/${page}`);
+}
+
+const { Content } = await render(guidePage);
+
+// Get the overview to show breadcrumbs/navigation
+const overview = guides.find((g) => g.slug === `${cert}/index`);
+---
+
+<BaseLayout title={`${guidePage.data.title} | George Ollis`} description={guidePage.data.description}>
+  <article class="article-shell">
+    <header class="article-header">
+      <p class="section-label">{overview?.data.provider || guidePage.data.provider}</p>
+      <h1>{guidePage.data.title}</h1>
+      <p class="lede">{guidePage.data.description}</p>
+      <div class="detail-meta">
+        {overview?.data.examCode && <span>Exam: {overview.data.examCode}</span>}
+        <span>Status: {overview?.data.status || guidePage.data.status}</span>
+      </div>
+    </header>
+    
+    <!-- Study Guide Navigation -->
+    {overview && (
+      <nav class="cert-nav">
+        <a href={`/study-guides/${cert}/`} class={page === 'index' ? 'active' : ''}>Overview</a>
+        <a href={`/study-guides/${cert}/content/`} class={page === 'content' ? 'active' : ''}>Content</a>
+        <a href={`/study-guides/${cert}/labs/`} class={page === 'labs' ? 'active' : ''}>Labs</a>
+        <a href={`/study-guides/${cert}/practice/`} class={page === 'practice' ? 'active' : ''}>Practice</a>
+        <a href={`/study-guides/${cert}/resources/`} class={page === 'resources' ? 'active' : ''}>Resources</a>
+        <a href={`/study-guides/${cert}/notes/`} class={page === 'notes' ? 'active' : ''}>Notes</a>
+      </nav>
+    )}
+    
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cert-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .cert-nav a {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 0.25rem;
+    background: var(--surface);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 160ms ease;
+  }
+  
+  .cert-nav a:hover,
+  .cert-nav a.active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+</style>

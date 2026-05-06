@@ -11,19 +11,31 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   <section class="section-block blog-archive">
     <p class="section-label">Blog</p>
 
-    <ul class="post-list post-list-archive">
+    <div class="blog-grid" id="blog-grid">
       {posts.map((post) => (
-        <li>
-          <a class="post-link" href={`/blog/${post.slug}/`}>
-            <span class="post-title">{post.data.title}</span>
-            <span class="post-date">{post.data.date.toLocaleDateString('en-GB', {
+        <a 
+          class="blog-card" 
+          href={`/blog/${post.slug}/`}
+        >
+          <div class="card-header">
+            <h3 class="card-title">{post.data.title}</h3>
+            <span class="card-date">{post.data.date.toLocaleDateString('en-GB', {
               day: '2-digit',
               month: 'short',
               year: 'numeric'
             })}</span>
-          </a>
-        </li>
+          </div>
+          {post.data.description && (
+            <p class="card-description">{post.data.description}</p>
+          )}
+        </a>
       ))}
-    </ul>
+    </div>
   </section>
+
+  <style>
+    .blog-card[data-hidden] {
+      display: none;
+    }
+  </style>
 </BaseLayout>
