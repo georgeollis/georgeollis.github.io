@@ -1,12 +1,24 @@
 :root {
-  --bg: #faf6f0;
-  --surface: #f3ede4;
-  --surface-2: #ece5d9;
+  --bg: #fdfaf5;
+  --surface: #f7f2ea;
+  --surface-2: #f0e9de;
   --ink: #2f3437;
   --muted: #5f666b;
   --accent: #3a4146;
   --accent-strong: #242a2e;
   --line: #e2d9cc;
+  --shadow: none;
+}
+
+[data-theme='dark'] {
+  --bg: #5e6472;
+  --surface: #6f7984;
+  --surface-2: #7a8595;
+  --ink: #ffa69e;
+  --muted: #e8bbb3;
+  --accent: #ffa69e;
+  --accent-strong: #ffbfb7;
+  --line: #6f7984;
   --shadow: none;
 }
 
@@ -48,9 +60,10 @@ a {
   right: 0;
   height: 56px;
   border-bottom: 1px solid var(--line);
-  background: rgba(250, 246, 240, 0.88);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s;
   z-index: 100;
 }
 
@@ -86,6 +99,7 @@ nav,
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a,
@@ -654,6 +668,28 @@ h3 {
 .site-footer {
   border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  line-height: 1.4;
+}
+
+.theme-toggle:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .site-footer-inner {

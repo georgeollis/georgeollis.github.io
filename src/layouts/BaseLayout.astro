@@ -25,7 +25,7 @@ const ogImage = new URL(image, Astro.site);
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#faf6f0" />
+    <meta name="theme-color" content="#fdfaf5" />
     <meta name="author" content="George Ollis" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/jpeg" href="/images/profile-icon.jpg" />
@@ -54,6 +54,7 @@ const ogImage = new URL(image, Astro.site);
         <nav>
           <a href="/blog">Blog</a>
           <a href="/certifications">Certifications</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Light</button>
         </nav>
       </div>
     </header>
@@ -72,5 +73,25 @@ const ogImage = new URL(image, Astro.site);
         </div>
       </footer>
     </div>
+    <script>
+      const btn = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+      const setTheme = (dark) => {
+        if (dark) {
+          root.setAttribute('data-theme', 'dark');
+          btn.textContent = 'Dark';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          root.removeAttribute('data-theme');
+          btn.textContent = 'Light';
+          localStorage.setItem('theme', 'light');
+        }
+      };
+      const stored = localStorage.getItem('theme');
+      setTheme(stored === 'dark');
+      btn.addEventListener('click', () => {
+        setTheme(root.getAttribute('data-theme') !== 'dark');
+      });
+    </script>
   </body>
 </html>
