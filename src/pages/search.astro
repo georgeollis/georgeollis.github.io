@@ -7,18 +7,21 @@ const query = Astro.url.searchParams.get('q') || '';
 <BaseLayout title={`Search${query ? ` - ${query}` : ''} | George Ollis`} description="Search blog posts and guides.">
   <section class="section-block search-results">
     <p class="section-label">Search</p>
-    <h1>Search</h1>
+    <h1>Search Results</h1>
 
-    <div class="search-info">
-      <p>Pagefind search index is generated at build time. Use the search box in the header to search across all posts and guides.</p>
-      <p><strong>Note:</strong> Search functionality will be available after deployment. During development, browse using the Blog and Study Guides sections.</p>
-    </div>
+    {query ? (
+      <div id="pagefind-ui" data-ui="light"></div>
+    ) : (
+      <div class="search-info">
+        <p>Enter a search query to find posts.</p>
+      </div>
+    )}
   </section>
 </BaseLayout>
 
 <style>
   .search-results {
-    max-width: 800px;
+    max-width: 900px;
   }
 
   .search-info {
@@ -38,6 +41,7 @@ const query = Astro.url.searchParams.get('q') || '';
     margin-top: 0;
   }
 
+
   .search-info p:last-child {
     margin-bottom: 0;
   }
@@ -46,3 +50,13 @@ const query = Astro.url.searchParams.get('q') || '';
     color: var(--accent);
   }
 </style>
+
+<script define:vars={{ query }}>
+  if (query && window.PagefindUI) {
+    new window.PagefindUI({
+      element: '#pagefind-ui',
+      showSubResults: true,
+      autofocus: false
+    });
+  }
+</script>
