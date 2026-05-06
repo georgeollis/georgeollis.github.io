@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'George Ollis',
+  description = 'Cloud Architect and Kubestronaut with over 40 Microsoft certifications, specialising in Azure, apps, AI, and Microsoft Foundry.',
+  image = '/images/og-default.png'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#faf6f0" />
+    <meta name="author" content="George Ollis" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/jpeg" href="/images/profile-icon.jpg" />
+    <link rel="apple-touch-icon" href="/images/profile-icon.jpg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="George Ollis" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="wordmark" href="/">George Ollis</a>
+        <nav>
+          <a href="/blog">Blog</a>
+          <a href="/certifications">Certifications</a>
+        </nav>
+      </div>
+    </header>
+    <div class="content-frame">
+      <main class="site-shell">
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div class="site-shell site-footer-inner">
+          <p>© {new Date().getFullYear()} George Ollis</p>
+          <div class="footer-links">
+            <a href="/blog">Blog</a>
+            <a href="/certifications">Certifications</a>
+            <a href="/rss.xml">RSS</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

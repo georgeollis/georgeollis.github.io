@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Blog | George Ollis" description="All blog posts by George Ollis.">
+  <section class="section-block blog-archive">
+    <p class="section-label">Blog</p>
+
+    <ul class="post-list post-list-archive">
+      {posts.map((post) => (
+        <li>
+          <a class="post-link" href={`/blog/${post.slug}/`}>
+            <span class="post-title">{post.data.title}</span>
+            <span class="post-date">{post.data.date.toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric'
+            })}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
