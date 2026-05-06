@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const newUrl = `/blog/${post.slug}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${newUrl}`} />
+    <link rel="canonical" href={newUrl} />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>This page has moved to <a href={newUrl}>{newUrl}</a></p>
+    <script>
+      window.location.href = '{newUrl}';
+    </script>
+  </body>
+</html>
