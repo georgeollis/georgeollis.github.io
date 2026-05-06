@@ -46,17 +46,42 @@ const ogImage = new URL(image, Astro.site);
     <meta name="twitter:image" content={ogImage} />
 
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class={Astro.url.pathname === '/' ? 'page-home' : undefined}>
     <header class="site-header">
       <div class="site-header-inner">
         <a class="wordmark" href="/">George Ollis</a>
         <nav>
           <a href="/blog">Blog</a>
-          <a href="/certifications">My Certifications</a>
+          <div class="theme-selector">
+            <select id="theme-toggle" aria-label="Select theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="modern">Modern</option>
+            </select>
+          </div>
         </nav>
       </div>
     </header>
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', stored);
+        const select = document.getElementById('theme-toggle');
+        if (select) {
+          select.value = stored;
+          select.addEventListener('change', (e) => {
+            const theme = e.target.value;
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+          });
+        }
+      })();
+    </script>
     <div class="content-frame">
       <main class="site-shell">
         <slot />
@@ -66,7 +91,6 @@ const ogImage = new URL(image, Astro.site);
           <p>© {new Date().getFullYear()} George Ollis</p>
           <div class="footer-links">
             <a href="/blog">Blog</a>
-            <a href="/certifications">My Certifications</a>
             <a href="/rss.xml">RSS</a>
           </div>
         </div>

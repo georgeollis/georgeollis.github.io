@@ -1,5 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+    .trim();
+}
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -21,23 +34,37 @@ const schema = JSON.stringify({
 >
   <script type="application/ld+json" set:html={schema} />
   <section class="home-hero">
-    <h1 class="home-name">George Ollis</h1>
-    <p class="home-bio">
-      Cloud Architect and Kubestronaut with over 40 Microsoft certifications, specialising in Azure -
-      particularly apps, AI, and Microsoft Foundry. I write about what I build and learn.
-    </p>
-    <div class="home-links">
-      <a class="home-link" href="/blog">Blog</a>
-      <a class="home-link" href="/certifications">Certifications</a>
-      <a class="home-link home-link-external" href="https://www.linkedin.com/in/georgeollis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a class="home-link home-link-external" href="https://github.com/georgeollis" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </div>
+    <div class="home-content">
+      <h1 class="home-name">George Ollis</h1>
+      <p class="home-bio">
+        Cloud Architect and Kubestronaut with over 40 Microsoft certifications, specialising in Azure -
+        particularly apps, AI, and Microsoft Foundry. I write about what I build and learn.
+      </p>
+      <div class="home-links">
+        <a class="home-link" href="/blog">Blog</a>
+        <a class="home-link home-link-external" href="https://www.linkedin.com/in/georgeollis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="home-link home-link-external" href="https://github.com/georgeollis" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
 
-    <div class="topic-pills" aria-label="Featured topics">
-      <a href="/blog?topic=azure-apps">Azure Apps</a>
-      <a href="/blog?topic=ai">AI</a>
-      <a href="/blog?topic=microsoft-foundry">Microsoft Foundry</a>
-      <a href="/blog?topic=kubernetes">Kubernetes</a>
+      <div class="topic-pills" aria-label="Featured topics">
+        <a href="/blog?topic=azure-apps">Azure Apps</a>
+        <a href="/blog?topic=ai">AI</a>
+        <a href="/blog?topic=microsoft-foundry">Microsoft Foundry</a>
+        <a href="/blog?topic=kubernetes">Kubernetes</a>
+      </div>
+    </div>
+    <div class="home-accent">
+      <p class="home-accent-label">Recent Posts</p>
+      <div class="home-recent-posts">
+        {recentPosts.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="home-recent-post">
+            <span class="home-recent-date">{new Date(post.data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+            <span class="home-recent-title">{post.data.title}</span>
+            <span class="home-recent-arrow">→</span>
+          </a>
+        ))}
+      </div>
+      <a href="/blog" class="home-all-posts">All posts →</a>
     </div>
   </section>
 </BaseLayout>
