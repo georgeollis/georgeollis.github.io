@@ -1,14 +1,8 @@
-# georgeollis.com (Astro)
+# georgeollis.com
 
-A modern, markdown-first personal site inspired by editorial portfolio layouts.
+Personal blog by George Ollis — writing about Azure, cloud architecture, AI, and infrastructure.
 
-## Tech
-
-- Astro (static output)
-- Markdown content collections
-- Custom CSS design system
-- RSS generation
-- Ghost migration utility (RSS -> Markdown)
+Built with [Astro](https://astro.build), deployed to GitHub Pages.
 
 ## Local development
 
@@ -17,40 +11,22 @@ npm install
 npm run dev
 ```
 
-## Write new posts
+## Writing a new post
 
-Create a new `.md` file in `src/content/blog/` using this frontmatter:
+Create a `.md` file in `src/content/blog/` with this frontmatter:
 
 ```md
 ---
 title: "Post title"
 description: "One line summary"
-date: 2026-05-02
+date: 2026-05-06
 tags:
   - azure
-  - ai
 ---
 
-Your content here.
+Post content here.
 ```
 
-## Migrate existing Ghost posts
+## Deployment
 
-```bash
-npm run import:ghost
-```
-
-Optional arguments:
-
-```bash
-node scripts/migrate-ghost.mjs https://www.georgeollis.com src/content/blog
-```
-
-## Deploy on GitHub Pages
-
-1. Create a GitHub repo.
-2. Push this project.
-3. In repo settings, enable GitHub Pages using GitHub Actions.
-4. The included workflow at `.github/workflows/deploy.yml` will build and deploy automatically.
-
-If your Pages URL is not the root domain, set `site` (and optionally `base`) in `astro.config.mjs`.
+Pushes to `main` automatically build and deploy via `.github/workflows/deploy.yml`.
