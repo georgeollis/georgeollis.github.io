@@ -9,13 +9,7 @@ const query = Astro.url.searchParams.get('q') || '';
     <p class="section-label">Search</p>
     <h1>Search Results</h1>
 
-    {query ? (
-      <div id="pagefind-ui" data-ui="light"></div>
-    ) : (
-      <div class="search-info">
-        <p>Enter a search query to find posts.</p>
-      </div>
-    )}
+    <div id="pagefind-ui"></div>
   </section>
 </BaseLayout>
 
@@ -24,39 +18,52 @@ const query = Astro.url.searchParams.get('q') || '';
     max-width: 900px;
   }
 
-  .search-info {
-    padding: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--line);
+  :global(.pagefind-ui) {
+    --pagefind-ui-primary: #3a4146;
+    --pagefind-ui-text: #2f3437;
+    --pagefind-ui-background: #F5F2EB;
+    --pagefind-ui-border: #D4C9B9;
+    --pagefind-ui-shadow: rgba(58, 65, 70, 0.1);
+  }
+
+  :global(.pagefind-ui__search-input) {
     border-radius: 0.5rem;
-    margin: 2rem 0;
+    padding: 0.75rem 1rem;
   }
 
-  .search-info p {
-    margin: 0.75rem 0;
-    color: var(--muted);
+  :global(.pagefind-ui__results-container) {
+    margin-top: 1.5rem;
   }
 
-  .search-info p:first-child {
-    margin-top: 0;
+  :global(.pagefind-ui__result) {
+    border: 1px solid #D4C9B9;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
   }
 
-
-  .search-info p:last-child {
-    margin-bottom: 0;
-  }
-
-  .search-info strong {
-    color: var(--accent);
+  :global(.pagefind-ui__result:hover) {
+    border-color: #3a4146;
+    box-shadow: 0 4px 12px rgba(58, 65, 70, 0.08);
   }
 </style>
 
 <script define:vars={{ query }}>
-  if (query && window.PagefindUI) {
-    new window.PagefindUI({
+  if (window.PagefindUI) {
+    const pagefind = new window.PagefindUI({
       element: '#pagefind-ui',
       showSubResults: true,
-      autofocus: false
+      autofocus: true
     });
+    
+    if (query) {
+      // Pre-fill search with query term
+      const searchInput = document.querySelector('.pagefind-ui__search-input');
+      if (searchInput) {
+        searchInput.value = query;
+        // Trigger search
+        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
   }
 </script>
