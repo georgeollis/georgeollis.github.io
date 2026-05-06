@@ -1,4 +1,4 @@
----
+﻿---
 title: "Testing out Azure Policies Modify Effect"
 description: "This will be the first blog around Azure Policy. I'm hoping, but I don't promise to have a blog about all the policy effects Azure Policy can do and the best ways to run, deploy and configure the policies. In our first blog, we will examine the modify effect policy."
 date: 2023-03-05
@@ -7,8 +7,6 @@ tags:
   - azure-policy
 canonicalUrl: "https://www.georgeollis.com/azure-policy-modify/"
 ---
-
-05 Mar 2023 6 min read
 
 # Testing out Azure Policies Modify Effect
 

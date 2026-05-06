@@ -1,4 +1,4 @@
----
+﻿---
 title: "Creating a user licensing Azure Workbook using Azure Logic Apps and Log Analytics."
 description: "Have you ever had a requirement to find out who has a particular license across an organisation? What about a quick view of user accounts that have been assigned licenses but are disabled?
 
@@ -9,8 +9,6 @@ tags:
   - azure-apps
 canonicalUrl: "https://www.georgeollis.com/license-insights-workbook/"
 ---
-
-12 Apr 2023 6 min read
 
 # Creating a user licensing Azure Workbook using Azure Logic Apps and Log Analytics.
 

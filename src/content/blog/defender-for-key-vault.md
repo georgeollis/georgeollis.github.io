@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploring Defender for Key Vault"
 description: "Another blog about a Defender product in Microsoft Defender for Cloud - Have you ever looked at Defender for Key Vault and thought, what is it? Luckily, you've come across this blog (Or not so lucky).
 
@@ -9,8 +9,6 @@ tags:
   - azure-key-vault
 canonicalUrl: "https://www.georgeollis.com/defender-for-key-vault/"
 ---
-
-03 Feb 2023 5 min read
 
 # Exploring Defender for Key Vault
 

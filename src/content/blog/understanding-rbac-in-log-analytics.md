@@ -1,4 +1,4 @@
----
+﻿---
 title: "Understanding access in Log Analytics Workspaces"
 description: "Sometimes customers will ask how we control log access in their Log Analytics Workspaces and ensure that only the correct users can access the logs for their resources.
 
@@ -9,8 +9,6 @@ tags:
   - azure-identity
 canonicalUrl: "https://www.georgeollis.com/understanding-rbac-in-log-analytics/"
 ---
-
-27 Feb 2023 6 min read
 
 # Understanding access in Log Analytics Workspaces
 

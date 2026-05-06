@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sending performance counters to Azure Monitor Metrics."
 description: "Using the Azure Monitor Agent and configuring a data collection rule to send performance counters to Azure Monitor Metrics allows you to collect performance counters from the guest operating system that runs as part of a virtual machine.
 
@@ -8,8 +8,6 @@ tags:
   - azure-monitor
 canonicalUrl: "https://www.georgeollis.com/sending-azure-monitor-log/"
 ---
-
-21 Oct 2022 3 min read [Azure Monitor](/tag/azure-monitor/ "Azure Monitor")
 
 # Sending performance counters to Azure Monitor Metrics.
 

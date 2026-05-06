@@ -1,4 +1,4 @@
----
+﻿---
 title: "Storing Bicep Modules in Azure Container Registry"
 description: "You can use Azure Container Registry (ACR) to create a private module repo to share modules within your organisation.
 
@@ -10,8 +10,6 @@ tags:
   - azure-container-registry
 canonicalUrl: "https://www.georgeollis.com/storing-bicep-modules-in-azure-container-registry/"
 ---
-
-10 Nov 2022 3 min read [Azure Bicep](/tag/azure-bicep/ "Azure Bicep")
 
 # Storing Bicep Modules in Azure Container Registry
 

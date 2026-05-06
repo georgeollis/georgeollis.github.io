@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Virtual Network Manager - Controlling virtual networks at scale"
 description: "We are discussing Azure Virtual Network Manager (AVNM). It's a service that interests me. So, let's explore and see what it's all about.
 
@@ -8,8 +8,6 @@ tags:
   - azure-networking
 canonicalUrl: "https://www.georgeollis.com/azure-virtual-network-manager-at-scale/"
 ---
-
-08 Dec 2022 13 min read
 
 # Azure Virtual Network Manager - Controlling virtual networks at scale
 

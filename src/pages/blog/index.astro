@@ -19,14 +19,21 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
         >
           <div class="card-header">
             <h3 class="card-title">{post.data.title}</h3>
-            <span class="card-date">{post.data.date.toLocaleDateString('en-GB', {
-              day: '2-digit',
+            <span class="card-date">{post.data.date.toLocaleDateString('en-US', {
+              year: 'numeric',
               month: 'short',
-              year: 'numeric'
+              day: 'numeric'
             })}</span>
           </div>
           {post.data.description && (
             <p class="card-description">{post.data.description}</p>
+          )}
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="card-tags">
+              {post.data.tags.slice(0, 3).map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
           )}
         </a>
       ))}

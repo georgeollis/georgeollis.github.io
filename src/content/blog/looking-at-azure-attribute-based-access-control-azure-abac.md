@@ -1,4 +1,4 @@
----
+﻿---
 title: "What is Azure attribute-based access control?"
 description: "ABAC is an authorisation system that allows granular access based on attributes associated with security principles, resources, etc. Allowing access through attributes provides fine-grained access controls. ABAC is built on top of traditional RBAC within Azure.
 
@@ -9,8 +9,6 @@ tags:
   - azure-security
 canonicalUrl: "https://www.georgeollis.com/looking-at-azure-attribute-based-access-control-azure-abac/"
 ---
-
-14 Feb 2023 6 min read
 
 # What is Azure attribute-based access control?
 

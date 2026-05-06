@@ -1,4 +1,4 @@
----
+﻿---
 title: "Looking at Azure Network Watcher"
 description: "Who doesn't like a tool that helps troubleshoot networking issues? Everyone wants a hand now and then, which is precisely what Network Watcher is about.
 
@@ -8,8 +8,6 @@ tags:
   - azure-networking
 canonicalUrl: "https://www.georgeollis.com/network-watcher-become-a-great-troubleshooter/"
 ---
-
-09 Jan 2023 16 min read
 
 # Looking at Azure Network Watcher
 

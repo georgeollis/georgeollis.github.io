@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploring Azure NAT Gateway"
 description: "This blog will explore Azure NAT Gateway. At a high level, Azure NAT gateway is a fully managed Network Address Translation (NAT) service. NAT gateway simplifies outbound Internet connectivity for virtual networks.
 
@@ -8,8 +8,6 @@ tags:
   - azure-networking
 canonicalUrl: "https://www.georgeollis.com/exploring-azure-nat-gateway/"
 ---
-
-24 Dec 2022 5 min read
 
 # Exploring Azure NAT Gateway
 

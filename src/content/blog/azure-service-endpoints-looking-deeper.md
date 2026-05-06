@@ -1,4 +1,4 @@
----
+﻿---
 title: "Investigating Service Endpoints"
 description: "This blog will explore service endpoints, how they work, and why you may want to use them to protect your cloud resources.
 
@@ -10,8 +10,6 @@ tags:
   - azure-networking
 canonicalUrl: "https://www.georgeollis.com/azure-service-endpoints-looking-deeper/"
 ---
-
-01 Jan 2023 7 min read
 
 # Investigating Service Endpoints
 

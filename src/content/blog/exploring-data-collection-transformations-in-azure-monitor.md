@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploring AMA Data Collection Transformations in Azure Monitor"
 description: "This blog will look at the Data Collection Transformations you can do with Data Collection Rules (DCR) and why they may benefit you.
 
@@ -8,8 +8,6 @@ tags:
   - azure-monitor
 canonicalUrl: "https://www.georgeollis.com/exploring-data-collection-transformations-in-azure-monitor/"
 ---
-
-17 Nov 2022 3 min read [Azure Monitor](/tag/azure-monitor/ "Azure Monitor")
 
 # Exploring AMA Data Collection Transformations in Azure Monitor
 

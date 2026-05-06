@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Policy - Looking at the DenyAction Effect"
 description: "This blog will discuss the new Azure Policy effect currently in public preview called denyAction. I've only found out about this new effect from this YouTube video here that Microsoft posted.
 
@@ -9,8 +9,6 @@ tags:
   - azure-policy
 canonicalUrl: "https://www.georgeollis.com/azure-policy-deny-action-effect/"
 ---
-
-04 Dec 2022 3 min read
 
 # Azure Policy - Looking at the DenyAction Effect
 

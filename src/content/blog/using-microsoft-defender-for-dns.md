@@ -1,4 +1,4 @@
----
+﻿---
 title: "Using Microsoft Defender for DNS"
 description: "I never understood Defender for DNS's usefulness before writing this blog. Microsoft Defender for DNS provides another layer of protection for resources that utilise Azure DNS's Azure-provided name resolution capability.
 
@@ -9,8 +9,6 @@ tags:
   - azure-networking
 canonicalUrl: "https://www.georgeollis.com/using-microsoft-defender-for-dns/"
 ---
-
-18 Jan 2023 5 min read
 
 # Using Microsoft Defender for DNS
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure VWAN routes, propagations and labels."
 description: "This blog will go over Azure VWAN routing, propagations and labels.
 
@@ -12,8 +12,6 @@ tags:
   - routing
 canonicalUrl: "https://www.georgeollis.com/exploring-azure-vwan-routes-propagations-and-labels/"
 ---
-
-29 Nov 2022 7 min read [Azure Networking](/tag/azure-networking/ "Azure Networking")
 
 # Azure VWAN routes, propagations and labels.
 

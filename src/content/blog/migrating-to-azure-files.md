@@ -1,4 +1,4 @@
----
+﻿---
 title: "Migrate to Azure Files using Robocopy"
 description: "This blog will be the first of a few about migrating from Windows server file shares to Azure Files. In this blog, we will be looking at using Robopy to achieve this migration.
 
@@ -8,8 +8,6 @@ tags:
   - azure-storage
 canonicalUrl: "https://www.georgeollis.com/migrating-to-azure-files/"
 ---
-
-16 Jan 2023 8 min read
 
 # Migrate to Azure Files using Robocopy
 

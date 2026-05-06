@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Data Engineer - Study Guide"
 description: "I recently passed the Azure Data Engineer exam. This quick blog reviews the exam and what material I used to pass it.  The exam is all about data services within Azure, and a quick summary can be seen below:
 
@@ -10,8 +10,6 @@ tags:
   - dp-203
 canonicalUrl: "https://www.georgeollis.com/azure-data-engineer-study-guide/"
 ---
-
-26 Oct 2022 2 min read [DP-203](/tag/dp-203/ "DP-203")
 
 # Azure Data Engineer - Study Guide
 

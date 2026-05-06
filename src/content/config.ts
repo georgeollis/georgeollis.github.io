@@ -14,18 +14,4 @@ const blog = defineCollection({
   })
 });
 
-const studyGuides = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    provider: z.string(),
-    examCode: z.string().optional(),
-    status: z.enum(['planned', 'in-progress', 'completed']).default('planned'),
-    section: z.enum(['index', 'content', 'labs', 'practice', 'resources', 'notes']).optional(),
-    draft: z.boolean().default(false)
-  })
-});
-
-export const collections = { blog, studyGuides };
+export const collections = { blog };

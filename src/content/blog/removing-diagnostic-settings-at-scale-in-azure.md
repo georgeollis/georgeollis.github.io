@@ -1,4 +1,4 @@
----
+﻿---
 title: "Removing diagnostic settings at scale in Azure for Log Analytics Workspaces."
 description: "Sometimes you may need to view all the diagnostic settings for your resources and where they are sending them. You may also have a requirement to remove these at scale. This blog will go over exactly this.
 
@@ -9,8 +9,6 @@ tags:
   - azure-governance
 canonicalUrl: "https://www.georgeollis.com/removing-diagnostic-settings-at-scale-in-azure/"
 ---
-
-19 Oct 2022 3 min read [Diagnostic Settings](/tag/diagnostic-settings/ "Diagnostic Settings")
 
 # Removing diagnostic settings at scale in Azure for Log Analytics Workspaces.
 

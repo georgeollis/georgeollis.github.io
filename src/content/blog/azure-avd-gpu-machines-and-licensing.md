@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Virtual Desktop GPU Licensing - NVv3 Series Overview"
 description: "This short blog will cover important information about GPU licenses, specifically around VDI (Virtual desktop infrastructure) scenarios and some things to look out for.
 
@@ -13,8 +13,6 @@ tags:
   - azure-infrastructure
 canonicalUrl: "https://www.georgeollis.com/azure-avd-gpu-machines-and-licensing/"
 ---
-
-20 Dec 2022 2 min read
 
 # Azure Virtual Desktop GPU Licensing - NVv3 Series Overview
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Using Azure Route Server with P2S VPN Gateway"
 description: "Recently I had a customer who wanted to use Azure VPN Gateway for P2S connections for end-users which would allow them to access Azure resources through a VPN, but they also had a Cisco Meraki NVA in the hub virtual network that connected their Azure region to the head office"
 date: 2022-10-19
@@ -8,8 +8,6 @@ tags:
   - vpn
 canonicalUrl: "https://www.georgeollis.com/using-azure-route-server-with-p2s-vpn-gateway/"
 ---
-
-19 Oct 2022 4 min read [Route Server](/tag/route-server/ "Route Server")
 
 # Using Azure Route Server with P2S VPN Gateway
 

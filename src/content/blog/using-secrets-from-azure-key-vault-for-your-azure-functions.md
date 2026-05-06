@@ -1,4 +1,4 @@
----
+﻿---
 title: "Storing secrets for Azure Functions"
 description: "Do you want to store connection strings, secrets or sensitive information in a Function App and ensure it's only accessible to the application?
 
@@ -13,8 +13,6 @@ tags:
   - azure-key-vault
 canonicalUrl: "https://www.georgeollis.com/using-secrets-from-azure-key-vault-for-your-azure-functions/"
 ---
-
-01 Nov 2022 5 min read [Security](/tag/security/ "Security")
 
 # Storing secrets for Azure Functions
 

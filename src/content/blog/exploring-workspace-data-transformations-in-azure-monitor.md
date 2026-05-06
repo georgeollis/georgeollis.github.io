@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploring Workspace Data Transformations in Azure Monitor"
 description: "In a previous blog, we looked at using Data Transformation Rules with the Azure Monitor Agent; this blog can be viewed here: Exploring AMA Data Collection Transformations in Azure Monitor (georgeollis.com)
 
@@ -8,8 +8,6 @@ tags:
   - azure-monitor
 canonicalUrl: "https://www.georgeollis.com/exploring-workspace-data-transformations-in-azure-monitor/"
 ---
-
-30 Nov 2022 4 min read
 
 # Exploring Workspace Data Transformations in Azure Monitor
 

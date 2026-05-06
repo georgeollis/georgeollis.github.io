@@ -1,4 +1,4 @@
----
+﻿---
 title: "Testing out Cross-Region Azure Load Balancer"
 description: "My first blog about a load balancer. (It's been on my list for a while), Many blogs already cover basic and standard internal and external load balancers, so I don't want to cover those just yet, although I will blog about them at some point.
 
@@ -9,8 +9,6 @@ tags:
   - load-balancer
 canonicalUrl: "https://www.georgeollis.com/testing-cross-region-load-balancer/"
 ---
-
-09 Feb 2023 6 min read
 
 # Testing out Cross-Region Azure Load Balancer
 

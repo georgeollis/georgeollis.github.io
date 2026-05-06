@@ -1,4 +1,4 @@
----
+﻿﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { getCollection, render } from 'astro:content';
@@ -22,7 +22,6 @@ const { Content, headings } = await render(post);
       <h1>{post.data.title}</h1>
     </header>
     <div class="article-content">
-      <TableOfContents headings={headings} />
       <div class="prose">
         <Content />
       </div>

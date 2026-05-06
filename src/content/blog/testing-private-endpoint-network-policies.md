@@ -1,4 +1,4 @@
----
+﻿---
 title: "Testing private endpoint network policies"
 description: "We now have the ability to use NSGs and UDRs with Private Endpoints within an Azure Virtual Network.
 
@@ -9,8 +9,6 @@ tags:
   - private-endpoints
 canonicalUrl: "https://www.georgeollis.com/testing-private-endpoint-network-policies/"
 ---
-
-20 Oct 2022 3 min read [Azure Networking](/tag/azure-networking/ "Azure Networking")
 
 # Testing private endpoint network policies
 
