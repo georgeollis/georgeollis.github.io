@@ -48,22 +48,4 @@ const query = Astro.url.searchParams.get('q') || '';
   }
 </style>
 
-<script define:vars={{ query }}>
-  if (window.PagefindUI) {
-    const pagefind = new window.PagefindUI({
-      element: '#pagefind-ui',
-      showSubResults: true,
-      autofocus: true
-    });
-    
-    if (query) {
-      // Pre-fill search with query term
-      const searchInput = document.querySelector('.pagefind-ui__search-input');
-      if (searchInput) {
-        searchInput.value = query;
-        // Trigger search
-        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-    }
-  }
-</script>
+<script is:inline src="/pagefind/pagefind.js"></script>
