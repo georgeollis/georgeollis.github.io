@@ -109,7 +109,8 @@ a {
   position: absolute;
   left: 0;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: 0.06em;
@@ -698,6 +699,48 @@ h3 {
 
 .article-content {
   margin-top: 2rem;
+
+.article-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-strong);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.cta-button:hover {
+  background: var(--accent);
+  transform: translateX(-3px);
+}
+
+:root[data-theme="dark"] .cta-button {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:root[data-theme="dark"] .cta-button:hover {
+  background: var(--accent-strong);
+}
+
+:root[data-theme="modern"] .cta-button {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:root[data-theme="modern"] .cta-button:hover {
+  background: var(--accent-strong);
+}
 }
 
 @media (max-width: 1024px) {
