@@ -23,8 +23,8 @@ const newUrl = `/blog/${post.slug}/`;
   </head>
   <body>
     <p>This page has moved to <a href={newUrl}>{newUrl}</a></p>
-    <script>
-      window.location.href = '{newUrl}';
+    <script define:vars={{ newUrl }}>
+      window.location.href = newUrl;
     </script>
   </body>
 </html>
