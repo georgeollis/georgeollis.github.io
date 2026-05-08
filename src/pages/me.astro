@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Me | George Ollis" description="Azure Architect specializing in Microsoft Foundry and Apps in Azure.">
+  <section class="me-section">
+    <div class="me-intro">
+      <h1>George Ollis</h1>
+      <p class="subtitle">Azure Architect</p>
+      <p class="bio">
+        Currently working across Microsoft Foundry and Apps in Azure. Based in Chipping Sodbury in the UK. 
+        Passionate about learning and earning new certifications. Fan of Microsoft Technology and OpenSource.
+      </p>
+    </div>
+
+    <div class="experience-timeline">
+      <h2>Career Path</h2>
+      <div class="career-card">
+        <div class="timeline">
+        <div class="timeline-item current">
+          <div class="timeline-year">2024 to Current</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Cloud Architect</h3>
+            <p class="company">Hastings Direct</p>
+            <p class="role-desc">Applications, AI and Infra</p>
+            <p class="location">Remote</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Senior Azure Consultant</h3>
+            <p class="company">Cloud Direct</p>
+            <p class="location">Hybrid</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Cloud Solution Architect</h3>
+            <p class="company">Microsoft</p>
+            <p class="location">Remote</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Azure Cloud Consultant</h3>
+            <p class="company">Cloud Direct</p>
+            <p class="location">Remote</p>
+          </div>
+        </div>
+
+        <div class="timeline-item company-group">
+          <div class="timeline-year">2016</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Rotork</h3>
+            <p class="duration">2016 – 2022 · 5+ years</p>
+            <div class="sub-timeline">
+              <div class="sub-role">→ Azure Cloud Solution Architect (2021–2022)</div>
+              <div class="sub-role">→ Azure Cloud Integration Solution Architect (2021)</div>
+              <div class="sub-role">→ Azure Site Reliability Lead (2019–2021)</div>
+              <div class="sub-role">→ Azure Site Reliability Engineer (2016–2019)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+  .me-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+  }
+
+  .me-intro {
+    margin-bottom: 4.5rem;
+    text-align: center;
+  }
+
+  .me-intro h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .bio {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .experience-timeline h2 {
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .career-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem 2rem 2rem 4rem;
+    background: var(--surface);
+    position: relative;
+  }
+
+  :root .career-card {
+    background: #000000;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :root[data-theme="dark"] .career-card,
+  :root[data-theme="modern"] .career-card {
+    background: var(--surface);
+    border-color: var(--line);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 50px;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 40px;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2.7rem;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid #000000;
+    transition: all 0.3s ease;
+     display: none;
+  }
+
+  :root[data-theme="dark"] .timeline-marker,
+  :root[data-theme="modern"] .timeline-marker {
+    border-color: var(--surface);
+  }
+
+  .timeline-item:hover .timeline-marker {
+    transform: scale(1.2);
+  }
+
+  .timeline-year {
+    font-family: 'Space Mono', monospace;
+    position: absolute;
+    left: -5rem;
+    top: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding-top: 0.25rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .timeline-content h3 {
+    font-family: 'Space Mono', monospace;
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  :root[data-theme="dark"] .timeline-content h3,
+  :root[data-theme="modern"] .timeline-content h3 {
+    color: var(--ink);
+  }
+
+  .company {
+    color: var(--color-accent);
+    font-family: 'Space Mono', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.1rem 0;
+  }
+
+  :root .company,
+  :root[data-theme="dark"] .company,
+  :root[data-theme="modern"] .company {
+    color: #ffffff;
+  }
+
+  .role-desc {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.1rem 0;
+  }
+
+  :root[data-theme="dark"] .role-desc,
+  :root[data-theme="modern"] .role-desc {
+    color: var(--muted);
+  }
+
+  .location {
+    font-family: 'Space Mono', monospace;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    margin: 0.1rem 0;
+  }
+
+  :root[data-theme="dark"] .location,
+  :root[data-theme="modern"] .location {
+    color: var(--muted);
+  }
+
+  .duration {
+    font-family: 'Space Mono', monospace;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin: 0.25rem 0;
+  }
+
+  :root[data-theme="dark"] .duration,
+  :root[data-theme="modern"] .duration {
+    color: var(--muted);
+  }
+
+  .company-group .timeline-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .sub-timeline {
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-accent);
+  }
+
+  .sub-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+  }
+
+  :root[data-theme="dark"] .sub-role,
+  :root[data-theme="modern"] .sub-role {
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    .me-intro h1 {
+      font-size: 2rem;
+    }
+
+    .timeline-year {
+      display: none;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.25rem;
+      padding-left: 40px;
+    }
+
+    .timeline-marker {
+      width: 20px;
+      height: 20px;
+      left: 2px;
+    }
+  }
+</style>
