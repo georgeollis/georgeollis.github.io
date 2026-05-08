@@ -30,11 +30,11 @@
   --bg: #E9EEFF;
   --surface: #DFD8F5;
   --surface-2: #D4CAEB;
-  --ink: #9E82D9;
-  --muted: #b39dd9;
-  --accent: #9E82D9;
-  --accent-strong: #7d5fc4;
-  --line: #d0c5e8;
+  --ink: #2f234d;
+  --muted: #5f527f;
+  --accent: #6547b8;
+  --accent-strong: #4d3499;
+  --line: #b8acd9;
 }
 
 * {
@@ -48,10 +48,28 @@ body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Space Mono', monospace;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.65;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 200;
+  padding: 0.65rem 0.9rem;
+  background: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 0.35rem;
+  border: 1px solid #000000;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
 }
 
 nav,
@@ -61,6 +79,14 @@ nav,
 
 a {
   color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
 }
 
 .content-frame {
@@ -132,6 +158,9 @@ nav,
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 nav a,
@@ -214,6 +243,11 @@ nav a:hover {
 .theme-selector select:focus {
   outline: none;
   border-color: var(--accent-strong);
+}
+
+.theme-selector select:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
 }
 
 :root[data-theme="dark"] .theme-selector select:hover,
@@ -757,8 +791,10 @@ h3 {
 }
 
 .prose {
-  font-size: 1rem;
+  font-size: 1.02rem;
   color: var(--ink);
+  line-height: 1.8;
+  max-width: 72ch;
 }
 
 .prose > *:first-child {

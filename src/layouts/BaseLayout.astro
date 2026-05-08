@@ -15,6 +15,7 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const isHomePage = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -48,7 +49,6 @@ const ogImage = new URL(image, Astro.site);
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     
     <!-- Google Analytics -->
@@ -60,7 +60,8 @@ const ogImage = new URL(image, Astro.site);
       gtag('config', 'G-EM8NE4J0K7');
     </script>
   </head>
-  <body class={Astro.url.pathname === '/' ? 'page-home' : undefined}>
+  <body class={isHomePage ? 'page-home' : undefined}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="site-header-inner">
         <a class="wordmark" href="/">George Ollis</a>
@@ -93,7 +94,7 @@ const ogImage = new URL(image, Astro.site);
       })();
     </script>
     <div class="content-frame">
-      <main class="site-shell">
+      <main class="site-shell" id="main-content">
         <slot />
       </main>
       <footer class="site-footer">
