@@ -19,8 +19,8 @@ Many customers are looking to modernise their file shares in some way, whether m
 
 Our customer scenario is simple; our customer has a file server running on-premises and wants to migrate it to Azure. They have a few other requirements:
 
-*   We are replacing a Windows file server, so we need to ensure that we can replicate the NTFS\\Windows ACL permissions already configured.
-*   Users need to authenticate through Active Directory Doman Services.
+*   We are replacing a Windows file server, so we need to ensure that we can replicate the **NTFS** \\ **Windows ACL** permissions already configured.
+*   Users need to authenticate through **Active Directory Domain Services**.
 
 A simple overview of the scenario can be found below. We have an S2S connection from on-premises, which allows us to extend Active Directory Domain Services into Azure - this server also has Azure AD Connect installed.
 

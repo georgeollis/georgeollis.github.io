@@ -12,21 +12,21 @@ canonicalUrl: "https://www.georgeollis.com/using-managed-private-endpoints-in-az
 
 ![Using managed private endpoints in Microsoft Foundry](/images/blog/using-managed-private-endpoints-in-azure-ai-foundry/azure-ai-network-outbound.png)
 
-In this blog, I will cover using private endpoints in Azure AI Foundry. At the time of this blog, you can only use a managed virtual network managed and provided by Microsoft.
+In this blog, I will cover using **private endpoints** in **Azure AI Foundry**. At the time of this blog, you can only use a **managed virtual network** managed and provided by Microsoft.
 
-This means that BYOVN (Bring your virtual network) is not supported. However, what can you do to connect to private resources within Azure? You can use managed private endpoints within the managed virtual network.
+This means that **BYOVN (Bring your own virtual network)** is not supported. However, what can you do to connect to private resources within Azure? You can use **managed private endpoints** within the **managed virtual network**.
 
 The experience is not great, but I hope Microsoft will change that. Some of the documentation provided either misses key information or doesn't offer it.
 
-Firstly, when creating an Azure AI Hub resource, you will be asked which network configuration you want. While keeping the defaults is easy, it's probably not recommended for enterprise scenarios where private endpoints are being used.
+Firstly, when creating an **Azure AI Hub** resource, you will be asked which **network configuration** you want. While keeping the defaults is easy, it's probably not recommended for enterprise scenarios where **private endpoints** are being used.
 
 ![Using managed private endpoints in Microsoft Foundry](/images/blog/using-managed-private-endpoints-in-azure-ai-foundry/image.png)
 
-I would always configure private with internet outbound—which is precisely what it says. The hub has a private endpoint, and computing resources can access private resources (More on that in a minute). However, data movement is unrestricted. For example, you can download any Python package on a compute instance used in the hub.
+I would always configure **private with internet outbound**—which is precisely what it says. The hub has a **private endpoint**, and computing resources can access **private resources** (More on that in a minute). However, data movement is unrestricted. For example, you can download any **Python package** on a compute instance used in the hub.
 
-Perhaps a better one for enterprises but with additional overhead is using private with approved outbound access, which means going outbound to the Internet via an Azure Firewall (managed for you). However, you must add a rule allowing this access outbound in this case.
+Perhaps a better one for enterprises but with additional overhead is using **private with approved outbound access**, which means going outbound to the Internet via an **Azure Firewall** (managed for you). However, you must add a rule allowing this access outbound in this case.
 
-Turning this on to private with approved outbound will provide you with this configuration, which allows you to configure inbound access to the hub (for colleagues in the organisation to connect to the hub) and workspace outbound access, which controls what compute, serverless, and managed online endpoints can connect to.
+Turning this on to **private with approved outbound** will provide you with this configuration, which allows you to configure inbound access to the hub (for colleagues in the organisation to connect to the hub) and **workspace outbound access**, which controls what compute, serverless, and managed online endpoints can connect to.
 
 ![Using managed private endpoints in Microsoft Foundry](/images/blog/using-managed-private-endpoints-in-azure-ai-foundry/image-1.png)
 

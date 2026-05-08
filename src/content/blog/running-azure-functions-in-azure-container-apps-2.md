@@ -11,7 +11,7 @@ canonicalUrl: "https://www.georgeollis.com/running-azure-functions-in-azure-cont
 
 ![Why Azure Container Apps Should Be Your Go‑To for Azure Functions](/images/blog/running-azure-functions-in-azure-container-apps-2/Presentation1-3.png)
 
-Running Azure Functions in Azure Container Apps (ACA) gives you the best of both worlds: the simplicity of serverless with the flexibility of containers. It’s a powerful way to modernise workloads without losing what makes Functions special — rapid development, event‑driven execution, and effortless scaling.
+Running **Azure Functions** in **Azure Container Apps (ACA)** gives you the best of both worlds: the simplicity of serverless with the flexibility of containers. It's a powerful way to modernise workloads without losing what makes **Functions** special — rapid development, event-driven execution, and effortless scaling.
 
 **Why ACA is the natural fit**
 

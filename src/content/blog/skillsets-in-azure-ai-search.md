@@ -1,6 +1,6 @@
 ---
 title: "Skillsets in Azure AI Search"
-description: "Many people use Azure AI Search for RAG-based applications – it's the go-to option from Microsoft (while also supporting a range of other databases, such as Cosmos DB and Azure SQL). In this post, I explain skillsets for AI enrichment."
+description: "Many people use **Azure AI Search** for **RAG-based applications** – it's the go-to option from Microsoft (while also supporting a range of other databases, such as **Cosmos DB** and **Azure SQL**). In this post, I explain skillsets for AI enrichment."
 date: 2025-12-03
 tags:
   - azure-ai
@@ -10,21 +10,21 @@ canonicalUrl: "https://www.georgeollis.com/skillsets-in-azure-ai-search/"
 
 ![Skillsets in Azure AI Search](/images/blog/skillsets-in-azure-ai-search/Presentation1.png)
 
-First - thanks for coming to this blog. I've made a promise to myself that I'll start blogging each week again!
+First - thank you for reading this blog. I've made a promise to myself that I'll start blogging each week again!
 
 Many people use Azure AI Search for RAG-based applications – it’s the go-to option from Microsoft (while also supporting a range of other databases, such as Cosmos DB and Azure SQL).
 
-In this blog post, I aim to explain the use of skillsets for AI enrichment. For example, imagine you have data stored in Azure Storage, and you want to unlock its potential: read the data, translate it, generate embeddings, or even call a custom web API. This is the power of skills.
+In this blog post, I aim to explain the use of **skillsets** for **AI enrichment**. For example, imagine you have data stored in **Azure Storage**, and you want to unlock its potential: read the data, translate it, generate embeddings, or even call a **custom web API**. This is the power of **skills**.
 
-Firstly, you don't just use skills - you use them as part of an Indexer that automates the process of pulling data from sources like SQL, Cosmos DB, or Blob Storage into the search index. It can run on demand or on a schedule, ensuring the index stays synchronised with the underlying data.
+Firstly, you don't just use **skills** - you use them as part of an **Indexer** that automates the process of pulling data from sources like **SQL**, **Cosmos DB**, or **Blob Storage** into the search index. It can run on demand or on a schedule, ensuring the index stays synchronised with the underlying data.
 
-Then you have the index itself, which many people will already be familiar with. An index is a structured container that defines how searchable data is stored and queried in Azure AI Search. It specifies fields, data types, and attributes, enabling efficient full-text search, filtering, and sorting.
+Then you have the **index** itself, which many people will already be familiar with. An **index** is a structured container that defines how searchable data is stored and queried in **Azure AI Search**. It specifies fields, data types, and attributes, enabling efficient full-text search, filtering, and sorting.
 
-Let's have a look at a few examples - we will be playing with. In our example, we have a basic index and three skills in the skillset. Our skills are the following:
+Let's have a look at a few examples - we will be playing with. In our example, we have a basic **index** and three **skills** in the **skillset**. Our skills are the following:
 
-*   Document Extraction Skill
-*   Translation Skill
-*   Custom Web API (Running in Azure Functions)
+*   **Document Extraction Skill**
+*   **Translation Skill**
+*   **Custom Web API (Running in Azure Functions)**
 
 **The index**
 
@@ -145,7 +145,7 @@ We have three fields in our index - to make this as easy to understand as possib
 }
 ```
 
-In this indexer, we’ve configured several settings within the parameters object. For example, we’ve set **allowSkillsetToReadFileData** to`true`, which enables our skillsets to access the data in the storage account. We’ve also set the parsing mode to **text** and specified that the data to be extracted is the file's content, along with any supporting metadata (which we are not using in this example).
+In this **indexer**, we've configured several settings within the **parameters** object. For example, we've set **allowSkillsetToReadFileData** to `true`, which enables our **skillsets** to access the data in the storage account. We've also set the parsing mode to **text** and specified that the data to be extracted is the file's content, along with any supporting metadata (which we are not using in this example).
 
 **Skillset**
 
@@ -231,16 +231,15 @@ In this indexer, we’ve configured several settings within the parameters objec
 }
 ```
 
-The JSON representation of this can be a little confusing, as a lot is going on. You have the index, indexer, and skillset files, and you need to ensure that the output from some of them correlates with the correct field. For example, the indexer has output mappings for _targetName_ that should correspond with the field within your index.
+The JSON representation of this can be a little confusing, as a lot is going on. You have the **index**, **indexer**, and **skillset** files, and you need to ensure that the output from some of them correlates with the correct field. For example, the **indexer** has output mappings for `_targetName_` that should correspond with the field within your **index**.
 
 **The relationship**
 
-This is a high-level overview of the relationships among the components. Again, this is pretty simplified, but hopefully you’ll start to understand.  
-The question I kept asking myself was – What is a document? It appears everywhere.
+This is a high-level overview of the relationships among the components. Again, this is pretty simplified, but hopefully you'll start to understand. The question I kept asking myself was – What is a **document**? It appears everywhere.
 
-Skills read from and write to an _enriched document tree_ that exists in memory. Initially, an enriched document is just the raw content extracted from a data source (articulated as the “/document” root node). With each skill execution, the enriched document gains structure and substance as each skill writes its output as nodes in the graph.
+**Skills** read from and write to an **enriched document tree** that exists in memory. Initially, an enriched document is just the raw content extracted from a data source (articulated as the **"/document"** root node). With each **skill** execution, the enriched document gains structure and substance as each skill writes its output as nodes in the graph.
 
-After skillset execution is complete, the output of an enriched document is routed to an index through user-defined output field mappings.
+After **skillset** execution is complete, the output of an enriched document is routed to an **index** through user-defined **output field mappings**.
 
 ![Skillsets in Azure AI Search](/images/blog/skillsets-in-azure-ai-search/image.png)
 
@@ -288,7 +287,7 @@ Now, going back to the index, we can clearly see that it was successful and that
 }
 ```
 
-Hopefully, you can now see why skillsets and indexers are so important in Azure AI Search. They allow you to transform the data, and the best part is you don’t even need to write any complex logic, especially around the ingestion of documents – just let the indexer take care of removing items from the index when documents are deleted.
+Hopefully, you can now see why **skillsets** and **indexers** are so important in **Azure AI Search**. They allow you to transform the data, and the best part is you don't even need to write any complex logic, especially around the ingestion of documents – just let the **indexer** take care of removing items from the index when documents are deleted.
 
 Thanks for reading this blog!
 

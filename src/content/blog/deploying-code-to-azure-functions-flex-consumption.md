@@ -10,15 +10,15 @@ canonicalUrl: "https://www.georgeollis.com/deploying-code-to-azure-functions-fle
 
 ![Deploying applications on  Azure Functions using Flex Consumption Plans](/images/blog/deploying-code-to-azure-functions-flex-consumption/Presentation1-1.png)
 
-In this blog, I will walk you through deploying code to Azure Functions using the Azure CLI and the Flex Consumption plan. Previous plans for Azure Functions offered several different deployment options. However, deployments in the Flex Consumption plan follow a single path. After your project code is built and zipped into an application package, it is deployed to a blob storage container.
+In this blog, I will walk you through deploying code to Azure Functions using the **Azure CLI** and the **Flex Consumption** plan. Previous plans for Azure Functions offered several different deployment options. However, deployments in the **Flex Consumption** plan follow a single path. After your project code is built and zipped into an application package, it is deployed to a **blob storage container**.
 
-I will use an HTTP function in our example, but the principles are the same for any application. The code can be generated using the Azure Function CLI (Core tools).
+I will use an **HTTP function** in our example, but the principles are the same for any application. The code can be generated using the **Azure Function CLI (Core tools)**.
 
 ![Deploying applications on  Azure Functions using Flex Consumption Plans](/images/blog/deploying-code-to-azure-functions-flex-consumption/image-4.png)
 
 The contents of the "my-azure-function" folder contains the code.
 
-Once you are happy with your code. Just ZIP the contents of the directory. You can use PowerShell to do this:
+Once you are happy with your code. Just ZIP the contents of the directory. You can use **PowerShell** to do this:
 
 ```PowerShell
 Compress-Archive -Path * -DestinationPath .\my-azure-function.zip
@@ -47,7 +47,7 @@ When you go into the deployment centre, you'll see deployment logs. This is inte
 
 ![Deploying applications on  Azure Functions using Flex Consumption Plans](/images/blog/deploying-code-to-azure-functions-flex-consumption/image-9.png)
 
-This deployment is similar to using the SCM\_DO\_BUILD\_DURING\_DEPLOYMENT on other plans but provides the benefits of using a packaged deployment. However, with flex consumption, app settings no longer need to influence deployment behaviour.
+This deployment is similar to using the `SCM_DO_BUILD_DURING_DEPLOYMENT` on other plans but provides the benefits of using a packaged deployment. However, with **flex consumption**, app settings no longer need to influence deployment behaviour.
 
 ### Blob Storage
 
