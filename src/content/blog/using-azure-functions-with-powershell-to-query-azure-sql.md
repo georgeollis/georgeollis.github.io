@@ -1,6 +1,6 @@
 ---
 title: "Using Azure Functions with PowerShell to query Azure SQL"
-description: "<p>(This blog has been in my drafts since 2022, but I thought it was worth posting!) - Yes, Azure Functions running PowerShell can query an Azure SQL database. This blog is not a production-ready implementation, but it covers the core areas of how you would do this. </p><p>Initially, an overview</p>"
+description: "(This blog has been in my drafts since 2022, but I thought it was worth posting!) Yes, Azure Functions running PowerShell can query an Azure SQL database. This blog is not a production-ready implementation, but it covers the core areas of how you would do this."
 date: 2024-11-25
 tags:
   - azure-apps

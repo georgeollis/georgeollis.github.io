@@ -1,6 +1,6 @@
 ---
 title: "Skillsets in Azure AI Search"
-description: "<p>First - thanks for coming to this blog. I&apos;ve made a promise to myself that I&apos;ll start blogging each week again! </p><p>Many people use Azure AI Search for RAG-based applications &#x2013; it&#x2019;s the go-to option from Microsoft (while also supporting a range of other</p>"
+description: "Many people use Azure AI Search for RAG-based applications – it's the go-to option from Microsoft (while also supporting a range of other databases, such as Cosmos DB and Azure SQL). In this post, I explain skillsets for AI enrichment."
 date: 2025-12-03
 tags:
   - azure-ai

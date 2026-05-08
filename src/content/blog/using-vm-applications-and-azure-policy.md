@@ -1,6 +1,6 @@
 ---
 title: "Using VM applications and Azure Policy to deploy applications."
-description: "<p></p><p>Have you ever had an agent that needed to be installed on all virtual machines, and you wanted a way to do this automatically and the ability to view compliant and non-compliant resources? This is where you can use VM Applications and Azure Policy to achieve just that. </p><p>An excellent</p>"
+description: "Have you ever had an agent that needed to be installed on all virtual machines, and you wanted a way to do this automatically and the ability to view compliant and non-compliant resources? This is where you can use VM Applications and Azure Policy to achieve just that."
 date: 2023-11-01
 tags:
   - azure-governance

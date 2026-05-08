@@ -1,6 +1,6 @@
 ---
 title: "Using the MCP extension in Azure Functions"
-description: "<p>This blog will explore the use of the MCP extension in Azure Functions. I will show you how to do the following:</p><ul><li><strong>Create a simple MCP server</strong> that exposes a single tool called <code>get_pet_details</code>. This tool will take in properties such as <code>petName</code> and <code>petType</code>.</li><li><strong>Run the MCP</strong></li></ul>"
+description: "This blog will explore the use of the MCP extension in Azure Functions, including creating a simple MCP server, running it locally on localhost, and deploying it to Azure with Entra ID authentication."
 date: 2025-12-07
 tags:
   - azure-apps

@@ -1,6 +1,6 @@
 ---
 title: "Invoking a custom Web API in Azure AI Search for enrichment"
-description: "<p>Hi everyone, I thought I would do another blog looking more closely at custom web APIs in Azure AI Search. We will not look at entirely securing them with authentication or anything like that, but I just wanted to show you how they work.</p><p>Custom web APIs can be used</p>"
+description: "Hi everyone, I thought I would do another blog looking more closely at custom web APIs in Azure AI Search. We will not look at entirely securing them with authentication or anything like that, but I just wanted to show you how they work."
 date: 2025-12-14
 tags:
   - azure-ai

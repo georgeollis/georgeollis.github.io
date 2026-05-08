@@ -1,6 +1,6 @@
 ---
 title: "Looking at Azure Policy resource selectors"
-description: "<p>So I recently did some work with Azure Policy, and we had a requirement to use the same policy but target different resources. I could have created a custom policy and used the field type (Example: field equals &quot;Microsoft.Storage/storageAccounts&quot;). However, I wanted to avoid the overhead</p>"
+description: "So I recently did some work with Azure Policy, and we had a requirement to use the same policy but target different resources. I could have created a custom policy and used the field type (Example: field equals \"Microsoft.Storage/storageAccounts\"). However, I wanted to avoid the overhead."
 date: 2023-06-16
 tags:
   - azure-governance

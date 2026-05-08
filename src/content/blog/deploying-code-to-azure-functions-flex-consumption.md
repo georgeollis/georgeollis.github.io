@@ -1,6 +1,6 @@
 ---
 title: "Deploying applications on  Azure Functions using Flex Consumption Plans"
-description: "<p>In this blog, I will walk you through deploying code to Azure Functions using the Azure CLI and the Flex Consumption plan. Previous plans for Azure Functions offered several different deployment options. However, deployments in the Flex Consumption plan follow a single path. After your project code is built and</p>"
+description: "In this blog, I will walk you through deploying code to Azure Functions using the Azure CLI and the Flex Consumption plan. Previous plans for Azure Functions offered several different deployment options. However, deployments in the Flex Consumption plan follow a single path."
 date: 2024-12-20
 tags:
   - azure-apps

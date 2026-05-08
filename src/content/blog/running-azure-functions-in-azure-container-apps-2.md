@@ -1,6 +1,6 @@
 ---
 title: "Why Azure Container Apps Should Be Your Go‑To for Azure Functions"
-description: "<p>Running Azure Functions in Azure Container Apps (ACA) gives you the best of both worlds: the simplicity of serverless with the flexibility of containers. It&#x2019;s a powerful way to modernise workloads without losing what makes Functions special &#x2014; rapid development, event&#x2011;driven execution, and effortless scaling.</p><p><strong>Why</strong></p>"
+description: "Running Azure Functions in Azure Container Apps (ACA) gives you the best of both worlds: the simplicity of serverless with the flexibility of containers. It's a powerful way to modernise workloads without losing what makes Functions special — rapid development, event-driven execution, and effortless scaling."
 date: 2025-12-05
 tags:
   - azure-apps

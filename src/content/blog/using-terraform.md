@@ -1,6 +1,6 @@
 ---
 title: "Running commands on your virtual machines using VM extensions in Terraform"
-description: "<p>A shorter blog post that explores using the custom script extension for both Windows and Linux Virtual machines in Terraform. It&apos;s slightly different for both operating systems so a blog post might be a good idea.</p><p>There&apos;s going to come to a point when you start</p>"
+description: "A shorter blog post that explores using the custom script extension for both Windows and Linux Virtual machines in Terraform. It's slightly different for both operating systems so a blog post might be a good idea."
 date: 2023-05-24
 tags:
   - terraform

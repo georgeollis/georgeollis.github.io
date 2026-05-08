@@ -1,6 +1,6 @@
 ---
 title: "Consuming a Microsoft Foundry Agent programatically"
-description: "<p>Hello everyone,</p><p>In this post, I&#x2019;ll walk through how to create prompt-based agents in Microsoft Foundry, publish them, and then consume them via Python. This approach provides a straightforward way to build agents in Foundry, publish them, and receive an API endpoint in your Foundry resource that you</p>"
+description: "In this post, I'll walk through how to create prompt-based agents in Microsoft Foundry, publish them, and then consume them via Python. This approach provides a straightforward way to build agents in Foundry and receive an API endpoint in your Foundry resource."
 date: 2025-12-04
 tags:
   - azure-ai

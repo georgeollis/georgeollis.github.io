@@ -1,6 +1,6 @@
 ---
 title: "Using managed private endpoints in Microsoft Foundry"
-description: "<p>In this blog, I will cover using private endpoints in Azure AI Foundry. At the time of this blog, you can only use a managed virtual network managed and provided by Microsoft. </p><p>This means that BYOVN (Bring your virtual network) is not supported. However, what can you do to connect</p>"
+description: "In this blog, I will cover using private endpoints in Azure AI Foundry. At the time of this blog, you can only use a managed virtual network managed and provided by Microsoft. BYOVN (Bring your own virtual network) is not supported."
 date: 2024-12-01
 tags:
   - azure-ai

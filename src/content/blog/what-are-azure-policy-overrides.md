@@ -1,6 +1,6 @@
 ---
 title: "What are Azure Policy Overrides?"
-description: "<p>Before we start, I&apos;d like to say that this functionaility is currently in public preview but is so powerful and helpful, especially when enforcing new policies across an environment. Azure Policy Overrides is pretty simple.</p><p>For example, I have a policy definition with a policy effect of <em>deny.</em></p>"
+description: "Before we start, I'd like to say that this functionality is currently in public preview but is so powerful and helpful, especially when enforcing new policies across an environment. Azure Policy Overrides is pretty simple."
 date: 2023-06-29
 tags:
   - azure-governance

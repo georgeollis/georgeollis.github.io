@@ -1,6 +1,6 @@
 ---
 title: "Using Azure Bastion in Azure Virtual WAN"
-description: "<p>So you&apos;ve deployed Azure Virtual WAN and want to start using Azure Bastion for remote management to virtual machines that are in connected virtual networks to the Azure VWAN. </p><p>You&apos;ve got a virtual network appliance sitting in a separate virtual network; this peers directly with the</p>"
+description: "So you've deployed Azure Virtual WAN and want to start using Azure Bastion for remote management to virtual machines that are in connected virtual networks to the Azure VWAN."
 date: 2023-06-21
 tags:
   - azure-networking

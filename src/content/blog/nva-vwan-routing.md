@@ -1,6 +1,6 @@
 ---
 title: "Routing traffic via an NVA in Azure Virtual WAN."
-description: "<p>Before we start this blog post, it&apos;s important to note that some customers may not require this since routing intent is now generally available (Link here: <a href=\"https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies?ref=georgeollis.com\">How to configure Virtual WAN Hub routing policies - Azure Virtual WAN | Microsoft Learn</a>), but this could be a suggested solution if</p>"
+description: "Before we start this blog post, it's important to note that some customers may not require this since routing intent is now generally available, but this could be a suggested solution for environments that need network virtual appliance-based routing in Azure Virtual WAN."
 date: 2023-08-09
 tags:
   - azure-networking

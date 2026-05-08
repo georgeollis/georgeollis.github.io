@@ -1,6 +1,6 @@
 ---
 title: "Azure Virtual WAN - Understanding Bypass Next Hop IP for workloads within this VNet"
-description: "<p>Have you used Azure Virtual WAN and noticed this setting? <em>Bypass Next Hop IP for workloads within this VNet? </em>What exactly does this mean? In this short blog, I thought I would go through what this means, how to test this configuration and why you may think about setting it</p>"
+description: "Have you used Azure Virtual WAN and noticed this setting? Bypass Next Hop IP for workloads within this VNet? What exactly does this mean? In this short blog, I thought I would go through what this means, how to test this configuration and why you may think about setting it."
 date: 2023-09-20
 tags:
   - azure-networking
