@@ -39,6 +39,8 @@ For caching to work, you need two things:
 
 The system checks the beginning of your prompt to see if it's seen this exact text before.
 
+**Remember**: inputs with fewer than 1,024 tokens never get cache hits.
+
 ## Cache Hits and Performance
 
 When the system finds your text in the cache and reuses it, that's a **cache hit**. You'll see this in the response as `cached_tokens` under `prompt_tokens_details`:
@@ -109,6 +111,16 @@ To get the most from caching:
 3. **Be exact**: Even tiny changes will break the cache, so keep the beginning identical
 4. **Watch your cache hits**: Check `cached_tokens` in responses to see if caching is actually helping
 
+## Example: Good Use Cases
+
+### Agent workflows with fixed tool schemas
+
+Tool definitions and structured output schemas can be large and repeated on every call.
+
+### Batch processing of similar tasks
+
+Example: classify and summarise thousands of records with the same instructions and output format.
+
 ## Important Notes
 
 - **Caching is on by default**: You don't have to do anything to enable it
@@ -118,22 +130,19 @@ To get the most from caching:
 
 ## Let's have a look:
 
-For the purpose of demonstrating this - I built a streamlit application that demonstrates this in practice. We will create an agent with a prompt that is larger than 1024 tokens. The instructions are realted to it being an expert in the automative industry.
+For the purpose of demonstrating this, I built a Streamlit application that shows this in practice. We will create an agent with a prompt that is larger than 1,024 tokens. The instructions relate to it being an expert in the automotive industry.
 
-![X](/images/blog/understanding-prompt-caching/image.png)
-
-
+![Streamlit Overview](/images/blog/understanding-prompt-caching/image-1.png)
 
 
+Initially, I send it a message saying "Hi", and the details are below:
 
-Intially I send it a message saying "Hi" and the details are below:
+![Prompt caching first request usage details](/images/blog/understanding-prompt-caching/image-2.png)
 
-![Prompt caching first request usage details](/images/blog/understanding-prompt-caching/image.png)
-
-Input tokens - 2193, but its a fresh session, and we've never used this before. If I send the same message again, stating "Hi"
+Input tokens: 2,193. However, it's a fresh session, and we've never used this before. If I send the same message again, stating "Hi":
 
 
-![Prompt caching second request usage details](/images/blog/understanding-prompt-caching/image-2.png)
+![Prompt caching second request usage details](/images/blog/understanding-prompt-caching/image-3.png)
 
 This time we can see that 2,176 tokens were taken directly from the cache. Why this number?
 
@@ -164,6 +173,23 @@ If `cached_tokens = 2176`, the match was:
 $$
 1024 + (9 \times 128) = 1024 + 1152 = 2176
 $$
+
+Here is the same logic as a flow diagram:
+
+```mermaid
+flowchart TD
+  A[Start cache comparison] --> B{First 1024 tokens identical?}
+  B -- No --> C[cached_tokens = 0]
+  B -- Yes --> D[Base cached_tokens = 1024]
+  D --> E[Check next chunk of 128 tokens]
+  E --> F{Chunk matches exactly?}
+  F -- Yes --> G[Add 128 to cached_tokens]
+  G --> E
+  F -- No --> H[Stop counting]
+  H --> I[cached_tokens = 1024 + n * 128]
+  I --> J[Example: n = 9]
+  J --> K[cached_tokens = 1024 + 9*128 = 2176]
+```
 
 That means:
 
