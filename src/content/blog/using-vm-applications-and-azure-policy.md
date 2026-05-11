@@ -150,7 +150,7 @@ The custom policy can be found here: [https://raw.githubusercontent.com/georgeol
             "effect": "deployIfNotExists",
             "details": {
               "type": "Microsoft.Compute/virtualMachines",
-              "name": "[[field('name')]",
+              "name": "[field('name')]",
               "existenceCondition": {
                 "allOf": [
                   {
@@ -158,7 +158,7 @@ The custom policy can be found here: [https://raw.githubusercontent.com/georgeol
                       "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*]",
                       "where": {
                         "field": "Microsoft.Compute/virtualMachines/applicationProfile.galleryApplications[*].packageReferenceId",
-                        "equals": "[[parameters('applicationVersion')]"
+                        "equals": "[parameters('applicationVersion')]"
                       }
                     },
                     "greater": 0
@@ -192,26 +192,26 @@ The custom policy can be found here: [https://raw.githubusercontent.com/georgeol
                       {
                         "apiVersion": "2021-07-01",
                         "type": "Microsoft.Compute/virtualMachines/VMapplications",
-                        "name": "[[concat(parameters('vmName'), '/', parameters('applicationName'))]",
-                        "location": "[[parameters('location')]",
+                        "name": "[concat(parameters('vmName'), '/', parameters('applicationName'))]",
+                        "location": "[parameters('location')]",
                         "properties": {
-                          "packageReferenceId": "[[parameters('packageReferenceId')]"
+                          "packageReferenceId": "[parameters('packageReferenceId')]"
                         }
                       }
                     ]
                   },
                   "parameters": {
                     "vmName": {
-                      "value": "[[field('name')]"
+                      "value": "[field('name')]"
                     },
                     "location": {
-                      "value": "[[field('location')]"
+                      "value": "[field('location')]"
                     },
                     "packageReferenceId": {
-                      "value": "[[parameters('applicationVersion')]"
+                      "value": "[parameters('applicationVersion')]"
                     },
                     "applicationName": {
-                      "value": "[[parameters('applicationName')]"
+                      "value": "[parameters('applicationName')]"
                     }
                   }
                 }
