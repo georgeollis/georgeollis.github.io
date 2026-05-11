@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Testing out Azure Policies Modify Effect"
 description: "This will be the first blog around Azure Policy. I'm hoping, but I don't promise to have a blog about all the policy effects Azure Policy can do and the best ways to run, deploy and configure the policies. In our first blog, we will examine the modify effect policy."
 date: 2023-03-05
@@ -10,7 +10,7 @@ canonicalUrl: "https://www.georgeollis.com/azure-policy-modify/"
 
 # Testing out Azure Policies Modify Effect
 
-![Testing out Azure Policies Modify Effect](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2023/03/VWAN-Routing-1.png)
+![Testing out Azure Policies Modify Effect](/images/blog/azure-policy-modify/VWAN-Routing-1.png)
 
 This will be the first blog around Azure Policy. I'm hoping, but I don't promise to have a blog about all the policy effects Azure Policy can do and the best ways to run, deploy and configure the policies. In our first blog, we will examine the modify effect policy.
 
@@ -32,7 +32,7 @@ It's important to note that we must ensure that the alias we are trying to chang
 Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image.png)
+![](/images/blog/azure-policy-modify/image.png)
 
 Example of running the PowerShell command, looking specifically for modifiable attributes for Azure Storage Accounts.
 
@@ -80,11 +80,11 @@ Let's explore our modify policy. We as an organisation want to ensure that our s
 
 Let us dissect the policy to get a good understanding of what is happening here.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-1.png)
+![](/images/blog/azure-policy-modify/image-1.png)
 
 We have the policy rule. Underneath that sits the if and then statements. We have the operator **allOf** being used in our scenario, and for this policy to work, both conditions need to return true. When true has been returned, the policy rule has been met and will continue to the then statement. So in this example, the policy is looking for storage accounts, and the supportsHttpsTrafficOnly has been set to false.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-2.png)
+![](/images/blog/azure-policy-modify/image-2.png)
 
 We can view the effect and additional details by looking at the then statement. First, what does roleDefinitionId mean? Luckily we mentioned managed identities earlier. This roleDefinitionId is what the managed identity of the policy will get through RBAC (Role-based access control). The Id specified provides the policy assignment resource contributor access.
 
@@ -121,7 +121,7 @@ Modify effects also support different operations. In our example, we are using *
 
 Let's now test our policy and confirm it's working as intended. I've already assigned the policy in my environment, which can be seen below. I've currently got no storage accounts deployed in my environment.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-3.png)
+![](/images/blog/azure-policy-modify/image-3.png)
 
 We will use Bicep to deploy a brand-new storage account, allowing us to change the field **supportsHttpsTrafficOnly** to false and proceed with our deployment. We can then see the behaviour. The bicep code can be found below.
 
@@ -151,23 +151,23 @@ New-AzResourceGroupDeployment -ResourceGroupName "CRALB-Demo" -TemplateFile .\st
 
 After the deployment, we are provided with an overview and values for the defined outputs. You can see that the httpStatus output has returned true - this means that the field supportsHttpsTrafficOnly must have been modified! Our code specifically asked for the field to be false, but Azure Policy ensured it wasn't.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-5.png)
+![](/images/blog/azure-policy-modify/image-5.png)
 
 ### Getting confirmation
 
 This is great, but how do we know the policy changed our field and ensured it was compliant? This is where we can view Azure Activity Logs. Going to our newly created storage account - we can start to investigate.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-6.png)
+![](/images/blog/azure-policy-modify/image-6.png)
 
 The storage account was stated as non-compliant. Hence the modify policy modified our request, ensuring that the field supportsHttpsTrafficOnly is always set to true.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-9.png)
+![](/images/blog/azure-policy-modify/image-9.png)
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-7.png)
+![](/images/blog/azure-policy-modify/image-7.png)
 
 You can also view the policy again and see that our storage account is compliant.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-10.png)
+![](/images/blog/azure-policy-modify/image-10.png)
 
 What if we had existing resources? What would happen? I will unassign the policy, deploy ten storage accounts and reassign the policy. The below script will do this.
 
@@ -177,21 +177,21 @@ What if we had existing resources? What would happen? I will unassign the policy
 
 Let's check the policy again and check our compliance scores.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-11.png)
+![](/images/blog/azure-policy-modify/image-11.png)
 
 As expected - the modify policy won't automatically remediate existing resources that have already been deployed (Remember, I had unassigned the policy); however, with a modify policy you can run something called a remediation task. Running a remediation task will bring the resources into compliance.
 
 Click create remediation task on the existing policy assignment.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-12.png)
+![](/images/blog/azure-policy-modify/image-12.png)
 
 The remediation task will highlight all the resources that will be remediated in this task. You can change some configuration settings around the resource count and how many parallel deployments you want. However, we shall stick with the defaults. Once happy, select **remediate.**  
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-13.png)
+![](/images/blog/azure-policy-modify/image-13.png)
 
 Returning to Azure Policy, there is a dedicated section for remediation tasks, and we can see that our new task has started and been completed already. There were no additional issues or errors, which is excellent.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-14.png)
+![](/images/blog/azure-policy-modify/image-14.png)
 
 Running this PowerShell command can force Azure Policy to start a compliance scan.
 
@@ -201,7 +201,7 @@ Start-AzPolicyComplianceScan -AsJob
 
 Our storage accounts are now reporting compliant!
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/03/image-15.png)
+![](/images/blog/azure-policy-modify/image-15.png)
 
 ### Summary
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure VWAN routes, propagations and labels."
 description: "This blog will go over Azure VWAN routing, propagations and labels.
 
@@ -15,13 +15,13 @@ canonicalUrl: "https://www.georgeollis.com/exploring-azure-vwan-routes-propagati
 
 # Azure VWAN routes, propagations and labels.
 
-![Azure VWAN routes, propagations and labels.](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2023/01/VWAN-Routing-3.png)
+![Azure VWAN routes, propagations and labels.](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/VWAN-Routing-3.png)
 
 This blog will go over Azure VWAN routing, propagations and labels.
 
 Our use case is simple, we have deployed Azure VWAN and one virtual hub. We have four spokes connecting to our hub. An overview can be found below.  
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-51.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-51.png)
 
 We want to ensure virtual machines in the blue virtual networks can't communicate with red virtual networks and vice-versa. So how do we do this?
 
@@ -31,7 +31,7 @@ Each connection is associated with **one** route table. A connection in our exam
 
 Associating a connection with a route table allows the connection to reach all the routes in that route table. All VPN, ExpressRoute, and User VPN connections are associated with the same (default) route table.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-44.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-44.png)
 
 ### Propagations
 
@@ -39,7 +39,7 @@ Routes can be propagated to one or multiple route tables. Connections will dynam
 
 A none route table is also available for each virtual hub. Propagating to the None route table implies that no routes must be propagated from the connection.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-45.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-45.png)
 
 ### Labels
 
@@ -54,29 +54,29 @@ Before we create our connections to the virtual hub, let's go and make two route
 
 Click on the virtual hub you want to create a route table for. Click on route tables and select start.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-46.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-46.png)
 
 Give the route table a name; in our example, we shall create a new route table called **blue-route-table**.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-47.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-47.png)
 
 Next, on the labels tab, let's label the route table **blue**.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-48.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-48.png)
 
 Once this is done, click the review and create button. Don't configure associations or propagations through this interface; we will do that with our connections. **Repeat these steps and create a red route table.**
 
 Let us add our connections now. Go to the virtual WAN resource and, click on virtual network connections, select **add connection.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-49.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-49.png)
 
 Let's call our first connection **blue-spoke01.** This connection will propagate its routes to the **blue** label and be associated with the blue-route-table we created earlier.  
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-50.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-50.png)
 
 Repeat this step for the second blue spoke. Once completed, we should have two associated connections propagating routes to the blue-route-table.  
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-52.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-52.png)
 
 Our blue virtual networks' IP ranges are the following.
 
@@ -87,42 +87,42 @@ We have virtual machines connected to both spokes. Let's confirm if they can com
 
 If we look at the effective routes of linux-blue-1, which is the VM in the vnet-blue-spoke-01 network, we can see that it has a route to 192.168.3.0/24 through the virtual WAN.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-53.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-53.png)
 
 We can also test by going to the serial console of Linux-blue-1 and attempting to ping linux-blue-2, which is in vnet-blue-spoke-02 and has the IP 192.168.3.4.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-54.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-54.png)
 
 Now let's add the red virtual networks by repeating the same steps, an overview of what we should have now can be found below for connections.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-55.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-55.png)
 
 It's important to note that no connections propagate routes to the default-route table.  We have disabled that functionality. If we look at effective routes now for the blue virtual machine, we should be able to confirm that we cannot see the routes for the red virtual networks. If we could see them, we should see the following prefixes.
 
 *   vnet-red-spoke-01 192.168.2.0/24
 *   vnet-red-spoke-02 192.168.4.0/24
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-58.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-58.png)
 
 If we attempt to ping linux-blue-1 (192.168.1.4) from linux-red-1 in our vnet-red-spoke-01 virtual network, we shouldn't be able to access it. The ping request hangs as it cannot connect.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-59.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-59.png)
 
 Our diagram can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-60.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-60.png)
 
 We can also confirm this if we view the routes being propagated to the route tables, this can be done by going back to **Route Tables** and selecting the effective routes.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-61.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-61.png)
 
 If we view the effective routes for the blue-route-table.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-62.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-62.png)
 
 Viewing the red-route-table.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-63.png)
+![](/images/blog/exploring-azure-vwan-routes-propagations-and-labels/image-63.png)
 
 If you would like to demo and test, please find the Git repo below.   [georgeollis/Azure\_VWAN\_Routing (github.com)](https://github.com/georgeollis/Azure_VWAN_Routing?ref=georgeollis.com) This has an Azure CLI script that will implement this for you. It can also be found below.
 

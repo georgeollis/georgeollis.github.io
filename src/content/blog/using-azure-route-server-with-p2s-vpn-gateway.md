@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Using Azure Route Server with P2S VPN Gateway"
 description: "Recently I had a customer who wanted to use Azure VPN Gateway for P2S connections for end-users which would allow them to access Azure resources through a VPN, but they also had a Cisco Meraki NVA in the hub virtual network that connected their Azure region to the head office"
 date: 2022-10-19
@@ -11,17 +11,17 @@ canonicalUrl: "https://www.georgeollis.com/using-azure-route-server-with-p2s-vpn
 
 # Using Azure Route Server with P2S VPN Gateway
 
-![Using Azure Route Server with P2S VPN Gateway](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/10/Route-Server-1.png)
+![Using Azure Route Server with P2S VPN Gateway](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Route-Server-1.png)
 
 Recently I had a customer who wanted to use Azure VPN Gateway for P2S connections for end-users which would allow them to access Azure resources through a VPN, but they also had a Cisco Meraki NVA in the hub virtual network that connected their Azure region to the head office in the UK.
 
 One of the requirements for them was to use the P2S connection to access resources in the head office through the Cisco Meraki device. Below is a diagram of the setup before Azure Route Server was implemented.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Before-Route-Server.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Before-Route-Server.png)
 
 In its current setup users connect to the VPN through the P2S connection. Once connected to the VPN, users should have access to workloads running in the hub and the spoke. To make this clear, please see below.    
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Before-Route-Server-User.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Before-Route-Server-User.png)
 
 So how can users connect to on-premises through the Cisco Meraki appliance? This is where Azure Route Server comes in! But firstly, what is Azure Route Server?
 
@@ -33,7 +33,7 @@ It's important to note that Azure Route Server requires a dedicated subnet and i
 
 Once deployed, our new topology looks like this:
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Route-Server.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Route-Server.png)
 
 Once the Azure Route Server has been deployed, you can find helpful information about the IP address and the ASN for it. We need this information to peer the ARS (Azure Route Server) with the Cisco Meraki.
 
@@ -41,7 +41,7 @@ We now need to configure the "peering" of the Cisco Meraki with the Azure Route 
 
 Once the configuration is complete, we can see that the provisioning state of the peering has succeeded.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Screenshot-2022-10-11-163711.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Screenshot-2022-10-11-163711.png)
 
 To view, all the routes learnt from the route server, run the PowerShell command. More information can be found here: [Get-AzRouteServerPeerLearnedRoute (Az.Network) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/az.network/get-azrouteserverpeerlearnedroute?view=azps-9.0.1&ref=georgeollis.com)
 
@@ -49,7 +49,7 @@ To view, all the routes learnt from the route server, run the PowerShell command
 Get-AzRouteServerPeerLearnedRoute
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Screenshot-2022-10-11-164021.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Screenshot-2022-10-11-164021.png)
 
 This command will show you all the routes that the Azure Route Server is now learning. You can see that the AsPath, which is 64512, is the Cisco Meraki.
 
@@ -63,7 +63,7 @@ Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerNam
 
 Once this is complete, we can test the P2S connection from the Azure VPN client and confirm if the routes are now being advertised.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/Screenshot-2022-10-11-172207.png)
+![](/images/blog/using-azure-route-server-with-p2s-vpn-gateway/Screenshot-2022-10-11-172207.png)
 
 If we compare the routes now being advertised to those by Cisco Meraki, we can confirm that this is successfully working and users can connect to on-premises resources. If this helps, please let me know!
 

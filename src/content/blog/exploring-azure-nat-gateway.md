@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Exploring Azure NAT Gateway"
 description: "This blog will explore Azure NAT Gateway. At a high level, Azure NAT gateway is a fully managed Network Address Translation (NAT) service. NAT gateway simplifies outbound Internet connectivity for virtual networks.
 
@@ -11,13 +11,13 @@ canonicalUrl: "https://www.georgeollis.com/exploring-azure-nat-gateway/"
 
 # Exploring Azure NAT Gateway
 
-![Exploring Azure NAT Gateway](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/12/VWAN-Routing-3.png)
+![Exploring Azure NAT Gateway](/images/blog/exploring-azure-nat-gateway/VWAN-Routing-3.png)
 
 This blog will explore Azure NAT Gateway. At a high level, Azure NAT gateway is a fully managed Network Address Translation (NAT) service. NAT gateway simplifies outbound Internet connectivity for virtual networks.
 
 Azure NAT Gateway has several benefits and is recommended by Microsoft for outbound connectivity. First, let's explore deploying a NAT Gateway, a deployment is reasonably straightforward, but you need to be aware of a few things. Our demo environment is essential, and an overview can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/VWAN-Routing-4.png)
+![](/images/blog/exploring-azure-nat-gateway/VWAN-Routing-4.png)
 
 Our demo environment already has the virtual network deployed and subnets. We need to deploy the NAT Gateway; let's do that together.
 
@@ -25,7 +25,7 @@ Our demo environment already has the virtual network deployed and subnets. We ne
 
 In the first section, we are asked to provide default information, such as name, resource group and location. We also need to decide our availability zone and TCP idle timeout configuration.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-79.png)
+![](/images/blog/exploring-azure-nat-gateway/image-79.png)
 
 ##### TCP Idle Timeout
 
@@ -37,21 +37,21 @@ It's important to note that the NAT gateway is currently a zonal service, which 
 
 Azure NAT Gateway can be designated to an availability zone within a region or to what Microsoft calls a **no zone**. (Which only means that Azure will select the availability zone automatically).
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/VWAN-Routing.jpg)
+![](/images/blog/exploring-azure-nat-gateway/VWAN-Routing.jpg)
 
 On the next page, we can select our outbound IP information; we can choose either to create or select multiple public IP addresses or public IP prefixes.
 
 Each outbound IP address provides 64,000 SNAT ports for the NAT gateway resource to use. You can add up to 16 outbound IP addresses.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-80.png)
+![](/images/blog/exploring-azure-nat-gateway/image-80.png)
 
 On the final page, we can select which virtual network and subnets we can associate with the NAT gateway. **It's important to note that A NAT gateway can't span multiple virtual networks.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-81.png)
+![](/images/blog/exploring-azure-nat-gateway/image-81.png)
 
 Click review and create this will start creating the NAT Gateway resource. For our demo environment, we've created a NAT Gateway in zone 2 in UK South and a virtual machine in zone 2. Our diagram can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-82.png)
+![](/images/blog/exploring-azure-nat-gateway/image-82.png)
 
 Our NAT gateway has two public IP addresses attached, 20.77.71.79 and 20.77.71.105. If I log in to my Linux VM and run the command:
 
@@ -61,15 +61,15 @@ curl ifconfig.me
 
 This will return the outbound public IP address used by the VM when going outbound to the internet.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-83.png)
+![](/images/blog/exploring-azure-nat-gateway/image-83.png)
 
 As you can see, we are using both public IP addresses outbound. What if we deploy a VM in zone 1 to the subnet used by the NAT Gateway in zone 2? So our diagram now looks like this.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-84.png)
+![](/images/blog/exploring-azure-nat-gateway/image-84.png)
 
 We've deployed a VM in zone 1 in UK South and confirmed it's using the NAT Gateway in zone 2. This works great.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-85.png)
+![](/images/blog/exploring-azure-nat-gateway/image-85.png)
 
 However, it's important to note that the VM is going outbound to the internet through the NAT Gateway in zone 2, which may make this a point of failure if zone 2 goes offline.
 
@@ -83,31 +83,31 @@ Microsoft provides out-of-the-box metrics that can be used to monitor the NAT Ga
 
 A total number of bytes transmitted within the period specified.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-86.png)
+![](/images/blog/exploring-azure-nat-gateway/image-86.png)
 
 ### Dropped packets
 
 The count of dropped packets over a period specified.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-87.png)
+![](/images/blog/exploring-azure-nat-gateway/image-87.png)
 
 ### Packets
 
 A total number of packets transmitted within the period specified.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-88.png)
+![](/images/blog/exploring-azure-nat-gateway/image-88.png)
 
 ### SNAT Connection Count
 
 Total concurrent active connections.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-89.png)
+![](/images/blog/exploring-azure-nat-gateway/image-89.png)
 
 ### Total SNAT Connection Count
 
 A total number of active SNAT connections.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-91.png)
+![](/images/blog/exploring-azure-nat-gateway/image-91.png)
 
 #### SNAT flows for NAT Gateway
 
@@ -115,7 +115,7 @@ NAT gateway provides a many-to-one configuration in which multiple virtual machi
 
 In the following table, two virtual machines (10.0.0.1 and 10.2.0.1) connect to [https://www.georgeollis.com](https://www.georgeollis.com/) destination IP 151.101.63.7.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-78.png)
+![](/images/blog/exploring-azure-nat-gateway/image-78.png)
 
 When the NAT gateway is configured with public IP address 65.52.1.1, each virtual machine's source IPs are translated into the NAT gateway's public IP address and a SNAT port.
 
@@ -186,7 +186,7 @@ Do you want to audit subnets without a NAT Gateway associated with them? I creat
 }
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-92.png)
+![](/images/blog/exploring-azure-nat-gateway/image-92.png)
 
 Thanks for reading this short blog about NAT Gateway. You can connect with me below.
 

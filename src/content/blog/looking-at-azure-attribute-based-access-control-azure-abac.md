@@ -1,4 +1,4 @@
-﻿---
+---
 title: "What is Azure attribute-based access control?"
 description: "ABAC is an authorisation system that allows granular access based on attributes associated with security principles, resources, etc. Allowing access through attributes provides fine-grained access controls. ABAC is built on top of traditional RBAC within Azure.
 
@@ -12,7 +12,7 @@ canonicalUrl: "https://www.georgeollis.com/looking-at-azure-attribute-based-acce
 
 # What is Azure attribute-based access control?
 
-![What is Azure attribute-based access control?](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2023/02/VWAN-Routing-10.png)
+![What is Azure attribute-based access control?](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/VWAN-Routing-10.png)
 
 ABAC is an authorisation system that allows granular access based on attributes associated with security principles, resources, etc. Allowing access through attributes provides fine-grained access controls. ABAC is built on top of traditional RBAC within Azure.
 
@@ -28,35 +28,35 @@ In our example, we will set up ABAC and show how based on attributes of the stor
 
 You can see a diagram of each user scenario below. Firstly let's look at CustomerA. CustomerA has been assigned the Storage Queue Data Reader role, which has a condition only allowing them to view the customer-a queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/customerA.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/customerA.png)
 
 Now let's look at CustomerC - this user has been assigned the Storage Queue Data Reader role but has conditions assigned only allowing them to view messages in the customer-c queue. They cannot view or access another queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/customerC.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/customerC.png)
 
 Finally, our admin has full access. This user has only been assigned the RBAC role Storage Queue Data Reader without any conditions.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/adminCustomer.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/adminCustomer.png)
 
 With my account that has full access, I will add messages to each queue and start assigning roles for each user, and we will then test with Azure Storage Explorer. Below is an image of our test storage account.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-26.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-26.png)
 
 Going into queues on the storage account - you will see that three queues have been created.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-27.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-27.png)
 
 Going into a queue, you will see some test messages that are sitting in the queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-28.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-28.png)
 
 Messages in the customer-a queue
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-29.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-29.png)
 
 Messages in the customer-b queue
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-30.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-30.png)
 
 Messages in the customer-c queue
 
@@ -64,77 +64,77 @@ Let's now create our role assignments and test what users can access. Firstly, I
 
 Head to the storage account, select access control, and click add.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-31.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-31.png)
 
 Find the Storage Queue Data Reader role and select it. Click next.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-32.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-32.png)
 
 On the member's tab, add the CustomerA user account to the role.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-33.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-33.png)
 
 For roles that support ABAC - you'll notice that you get an extra tab called conditions. This is where we can provide granular access utilising specific attributes of the resource.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-34.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-34.png)
 
 In this example, we've selected the data action to read the messages in the queue, but the attribute is the queue name, which has to equal the "customer-a" queue. If this doesn't equal that queue name, CustomerA will be blocked from viewing the messages in that queue. Select next when you are ready and deploy the role assignment.
 
 When deployed, you can see the role assignments for the user.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-35.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-35.png)
 
 Let's test that access works correctly by using Storage Explorer to view the messages in the queue and to review the behaviour.  
 
 Sign into Azure through Storage Explorer using the CustomerA account.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-36.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-36.png)
 
 Once logged in, you should be able to see Azure subscriptions and storage resources you have access to. We only have one storage account in our subscription.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-37.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-37.png)
 
 If we expand queues in the storage account, we should see all three queues created in this account. This is because we have the reader role on that resource, which provides access to the storage account at the control-plane level.
 
 However, it **doesn't** provide access to data within the storage account. Roles provide that with data actions allowing you to access the data within the storage account. This is typically called the data plane. Our Storage Queue Data Reader has data actions allowing users to view the messages in the queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-40.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-40.png)
 
 Showing that the Storage Queue Data Reader has data actions.
 
 Expanding the customer-a queue as the CustomerA user account, we can successfully view the messages within the queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-38.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-38.png)
 
 What about the other queues? You guessed right - we can't access those at all. We get an authorisation error.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-39.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-39.png)
 
 This fine-grained access control is now possible through ABAC. Let's do this again from the CustomerC perspective. This user should only be able to access the customer-c queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-41.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-41.png)
 
 Signed in as CustomerC
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-42.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-42.png)
 
 Viewing the customer-c queue.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-43.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-43.png)
 
 Unable to access customer-a.
 
 This is precisely the same outcome as CustomerA. Finally, let's test this again by assigning our admin user account the Storage Queue Data Reader **without** any conditions, and let's review the outcome.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-44.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-44.png)
 
 We are viewing all the queues with the admin account.  
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-45.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-45.png)
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-46.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-46.png)
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-47.png)
+![](/images/blog/looking-at-azure-attribute-based-access-control-azure-abac/image-47.png)
 
 You can see that the admin account can view all the messages in each queue. In our use case, our admin account should have access to all the queues.
 

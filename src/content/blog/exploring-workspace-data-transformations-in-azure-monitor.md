@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Exploring Workspace Data Transformations in Azure Monitor"
 description: "In a previous blog, we looked at using Data Transformation Rules with the Azure Monitor Agent; this blog can be viewed here: Exploring AMA Data Collection Transformations in Azure Monitor (georgeollis.com)
 
@@ -11,7 +11,7 @@ canonicalUrl: "https://www.georgeollis.com/exploring-workspace-data-transformati
 
 # Exploring Workspace Data Transformations in Azure Monitor
 
-![Exploring Workspace Data Transformations in Azure Monitor](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/11/DCR-Workspace.png)
+![Exploring Workspace Data Transformations in Azure Monitor](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/DCR-Workspace.png)
 
 In a previous blog, we looked at using Data Transformation Rules with the Azure Monitor Agent; this blog can be viewed here: [Exploring AMA Data Collection Transformations in Azure Monitor (georgeollis.com)](https://www.georgeollis.com/exploring-data-collection-transformations-in-azure-monitor/)
 
@@ -21,7 +21,7 @@ To view a list of supported tables, visit the link here: [Tables that support in
 
 However, let's explore further and set them up together. Firstly, below you should see a high-level diagram of how this works.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-64.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-64.png)
 
 The workspace transformation DCR is a special DCR applied directly to a Log Analytics workspace. Using data transformations in the workspace can have several benefits for the data.
 
@@ -33,11 +33,11 @@ So how do we set this up? Firstly, you must check that the table you want to use
 
 The table we have selected is the SignInLogs table that is coming from Azure Active Directory.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-65.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-65.png)
 
 Let's confirm that our diagnostic settings from Azure Active Directory are going to the correct Log Analytics Workspace. This can be done by going to Azure Active Directory and clicking **diagnostic settings.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-66.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-66.png)
 
 Once confirmed, let's go to the Log Analytics Workspace and ensure that the data is being ingested. This small query below will return all sign-in activity from the last hour.
 
@@ -48,7 +48,7 @@ SignInLogs
 
 We can confirm we see data.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-68.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-68.png)
 
 Let's say our use case is simple, we want to ingest the data into the workspace, but we want to transform it, so it only shows the following columns.
 
@@ -58,7 +58,7 @@ Let's say our use case is simple, we want to ingest the data into the workspace,
 
 An example of the table can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-69.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-69.png)
 
 This can be done with the data being ingested already. But what if we only want this data to be ingested, and we never want to see the other columns?
 
@@ -75,37 +75,37 @@ However, for example, the operatingSystem property is nested within the DeviceDe
 
 Let's go ahead and set one up. Go over to the Log Analytics Workspace and click on tables.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-70.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-70.png)
 
 Search for the SignInLogs table, right-click on the table and then click **create transformation.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-71.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-71.png)
 
 Open the transformation editor and submit your transformation and preview the data. Ensure you are happy with how the data looks. As previously mentioned, we are simply creating a new column called operatingSystem\_CF and removing columns which should leave us with **identity, operatingSystem\_CF** and **TimeGenerated.**
 
 **New columns being generated need to end with CF at the end. This is why you see operatingSystem\_CF.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-73.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-73.png)
 
 Note: the keyword **source** is used in the transformation instead of the table name. Don't get confused with this; whatever table you selected to be transformed from the previous step is the table that will be transformed. The data collection rule needs to identify the table this way.
 
 Once you are happy, click apply and save the changes. This will create a data collection rule for you and be linked to the workspace. You can view the data collection rule in the portal.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-74.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-74.png)
 
 If you click on the data collection rule and the export template button, you can view the transformation being applied by the DCR.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-75.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-75.png)
 
 How awesome is this? Let's go ahead and now confirm this is working for new data being ingested in the SignInLogs table.
 
 We can now see the data being ingested!
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-76.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-76.png)
 
 It's important to note that some columns, such as the tenantId and type, will still be visible when we query. However, the columns that would usually be visible are no longer being ingested.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-78.png)
+![](/images/blog/exploring-workspace-data-transformations-in-azure-monitor/image-78.png)
 
 This was a quick overview of how workspace data collection rules and transformations work! Hopefully, this is useful. I see this becoming very powerful in helping parse raw custom logs that are ingested, usually from third-party appliances such as Cisco Meraki, which are generally used with Microsoft Sentinel.
 
