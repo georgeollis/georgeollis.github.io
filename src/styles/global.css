@@ -873,6 +873,29 @@ h3 {
   line-height: 1.7;
 }
 
+.prose .mermaid {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  overflow-x: auto;
+}
+
+.prose .mermaid svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.prose .katex-display {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15rem 0;
+}
+
 .prose :not(pre) > code {
   padding: 0.12rem 0.35rem;
   border-radius: 0.35rem;

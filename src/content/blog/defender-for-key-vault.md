@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Exploring Defender for Key Vault"
 description: "Another blog about a Defender product in Microsoft Defender for Cloud - Have you ever looked at Defender for Key Vault and thought, what is it? Luckily, you've come across this blog (Or not so lucky).
 
@@ -12,7 +12,7 @@ canonicalUrl: "https://www.georgeollis.com/defender-for-key-vault/"
 
 # Exploring Defender for Key Vault
 
-![Exploring Defender for Key Vault](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2023/02/VWAN-Routing.png)
+![Exploring Defender for Key Vault](/images/blog/defender-for-key-vault/VWAN-Routing.png)
 
 Another blog about a Defender product in Microsoft Defender for Cloud - Have you ever looked at Defender for Key Vault and thought, what is it? Luckily, you've come across this blog (Or not so lucky).
 
@@ -34,19 +34,19 @@ Microsoft Defender for Key Vault has several built-in alerts, which can be found
 
 Let's enable Defender for Key Vault now and go through the process of testing some alerts. First, you need to go to Microsoft Defender for Cloud, select environment settings and select the subscription you want it enabled on.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-5.png)
+![](/images/blog/defender-for-key-vault/image-5.png)
 
 Enable Defender for Key Vault and select save. This will now enable the feature.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-6.png)
+![](/images/blog/defender-for-key-vault/image-6.png)
 
 Going to our Azure Key Vault resource and selecting security, we can see that Defender for Key Vault is enabled and will be working behind the scenes to detect anything suspicious.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-7.png)
+![](/images/blog/defender-for-key-vault/image-7.png)
 
 Let's go and create a secret for our Key Vault resource. Select **secrets** on the key vault and click **generate/import.** Add a new secret called **Testing** with the value MySecretValue. Click the save button to create the secret.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-8.png)
+![](/images/blog/defender-for-key-vault/image-8.png)
 
 Now let's test to see if Defender for Key Vault works. We will do this by simulating an alert. We've deployed a virtual machine in Azure and installed the TOR browser. We will attempt to trigger the alert "**Access from a TOR exit node to a key vault".**
 
@@ -54,19 +54,19 @@ This is my experience, and perhaps yours will be different, but It's important t
 
 From the below screenshot, we can see the alert has been triggered by viewing Microsoft Defender for Cloud on the specific resource.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-9.png)
+![](/images/blog/defender-for-key-vault/image-9.png)
 
 However, you can view all the alerts by going into Microsoft Defender for Cloud. Which will show you all the signs Microsoft Defender for Cloud has created.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-10.png)
+![](/images/blog/defender-for-key-vault/image-10.png)
 
 If you want additional details about the alert - you can click on it, and it will display helpful information about who accessed it, where they accessed it from and what operations they did. You can see that below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-11.png)
+![](/images/blog/defender-for-key-vault/image-11.png)
 
 You should export audit logs from Azure Key Vault to a log analytics workspace or send the records to an event hub if you use a third-party SIEM product. In our example, we will ensure that audit logs go to our log analytics workspace.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-12.png)
+![](/images/blog/defender-for-key-vault/image-12.png)
 
 Once we send logs to our workspace, we can use the KQL language to investigate the data. This will provide us with a deeper understanding of what is happening within our environment. Pairing this with Defender for Key Vault is excellent.
 
@@ -78,7 +78,7 @@ AzureDiagnostics
 | summarize count() by CallerIPAddress, Resource
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-13.png)
+![](/images/blog/defender-for-key-vault/image-13.png)
 
 The data that it returns is powerful. We can use this to see trends in our resources and to detect any new or surprising IP addresses that shouldn't be accessing the key vault.
 
@@ -97,7 +97,7 @@ AzureDiagnostics
 // requestUri_s contains the URI of the request
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-14.png)
+![](/images/blog/defender-for-key-vault/image-14.png)
 
 ### Summary
 

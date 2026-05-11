@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Removing diagnostic settings at scale in Azure for Log Analytics Workspaces."
 description: "Sometimes you may need to view all the diagnostic settings for your resources and where they are sending them. You may also have a requirement to remove these at scale. This blog will go over exactly this.
 
@@ -12,7 +12,7 @@ canonicalUrl: "https://www.georgeollis.com/removing-diagnostic-settings-at-scale
 
 # Removing diagnostic settings at scale in Azure for Log Analytics Workspaces.
 
-![Removing diagnostic settings at scale in Azure for Log Analytics Workspaces.](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/10/12.png)
+![Removing diagnostic settings at scale in Azure for Log Analytics Workspaces.](/images/blog/removing-diagnostic-settings-at-scale-in-azure/12.png)
 
 Sometimes you may need to view all the diagnostic settings for your resources and where they are sending them. You may also have a requirement to remove these at scale. This blog will go over exactly this.
 
@@ -62,11 +62,11 @@ Foreach ($sub in $subscriptions) {
 
 As the script can take a long time as you could have thousands of resources, the script will continue to update you by writing output to the screen.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/image.png)
+![](/images/blog/removing-diagnostic-settings-at-scale-in-azure/image.png)
 
 Once complete, you will have a table that can be returned through the $list variable. The properties that are returned can be found below:
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/image-1.png)
+![](/images/blog/removing-diagnostic-settings-at-scale-in-azure/image-1.png)
 
 You can now view all the diagnostic settings for resources reporting to a workspace; sometimes, you may need to delete diagnostic settings if they are reporting to an incorrect workspace, or you may want to view all the diagnostic settings.
 
@@ -88,7 +88,7 @@ foreach {
             write-host "Removing diagnostic settings for $($_.resourceName) in $($_.subscriptionName), old workspace: $($_.workspaceName)" -f green } } }
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/10/image-5.png)
+![](/images/blog/removing-diagnostic-settings-at-scale-in-azure/image-5.png)
 
 Thanks for reading! If this article is useful, please just let me know. :)
 

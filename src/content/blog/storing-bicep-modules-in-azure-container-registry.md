@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Storing Bicep Modules in Azure Container Registry"
 description: "You can use Azure Container Registry (ACR) to create a private module repo to share modules within your organisation.
 
@@ -13,7 +13,7 @@ canonicalUrl: "https://www.georgeollis.com/storing-bicep-modules-in-azure-contai
 
 # Storing Bicep Modules in Azure Container Registry
 
-![Storing Bicep Modules in Azure Container Registry](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/11/Bicep_ACR.png)
+![Storing Bicep Modules in Azure Container Registry](/images/blog/storing-bicep-modules-in-azure-container-registry/Bicep_ACR.png)
 
 You can use Azure Container Registry (ACR) to create a private module repo to share modules within your organisation.
 
@@ -25,7 +25,7 @@ In this blog post, we will create an Azure Container Registry, upload our Bicep 
 
 Start by going into the Azure portal and creating an ACR resource. This needs to be globally unique. Below is my demo ACR resource.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-23.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-23.png)
 
 For our example, we have a Bicep file that will deploy a storage account, but we want to upload this to the ACR resource so that other team members can utilise our Bicep file; this reduces duplication and allows us to work as a team.
 
@@ -37,7 +37,7 @@ This can cause headaches for all members of the team. (Although additional gover
 
 Below is our Bicep file for deploying a Storage Account within Azure.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-24.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-24.png)
 
 This file is currently stored locally, but we want to share it with the team so they can use this Bicep file within their deployments. To upload this to our ACR resource, run the following command in the Azure CLI.
 
@@ -49,19 +49,19 @@ az bicep publish --file storage.bicep --target br:lmbdgllisacr.azurecr.io/bicep/
 
 Once uploaded, you can go back to the ACR resource and confirm it was uploaded successfully.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-25.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-25.png)
 
 But how do we use this within our Bicep files? You can see that below:
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-26.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-26.png)
 
 Let's break down exactly what this means.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/Bicep.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/Bicep.png)
 
 Completing a what-if through the Azure CLI shows us what would be deployed.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-28.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-28.png)
 
 Once we are happy, this will deploy our workload. We can replace the what-if subcommand with the create command.
 
@@ -71,7 +71,7 @@ az deployment group create --resource-group lambda-dev --template-file .\example
 
 We can confirm our resource is now also appearing in the Azure portal.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-29.png)
+![](/images/blog/storing-bicep-modules-in-azure-container-registry/image-29.png)
 
 If this content was helpful, please feel free to connect with me on social media at
 

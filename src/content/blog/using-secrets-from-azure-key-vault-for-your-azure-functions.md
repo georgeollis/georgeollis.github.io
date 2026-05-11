@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Storing secrets for Azure Functions"
 description: "Do you want to store connection strings, secrets or sensitive information in a Function App and ensure it's only accessible to the application?
 
@@ -16,7 +16,7 @@ canonicalUrl: "https://www.georgeollis.com/using-secrets-from-azure-key-vault-fo
 
 # Storing secrets for Azure Functions
 
-![Storing secrets for Azure Functions](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/12/VWAN-Routing-6.png)
+![Storing secrets for Azure Functions](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/VWAN-Routing-6.png)
 
 Do you want to store connection strings, secrets or sensitive information in a Function App and ensure it's only accessible to the application?
 
@@ -58,19 +58,19 @@ As you can see from the code, it is a simple Function App that is triggered on a
 
 To confirm this works in our development environment, we can store the environment variable within our **local.settings.json** file, which has the environment variable key and value.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image.png)
 
 If we start the Function App from our development environment using the Azure Functions Core Tool - this can be downloaded here: [https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?ref=georgeollis.com).    
 
 We can confirm our Function App is working on our local environment once the following is displayed:
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-1.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-1.png)
 
 We should now be able to confirm this works by sending a GET request to http://localhost:7071/api/TestSecretValue.
 
 For my example, we will use the ThunderClient extension in VSCode, a built-in HTTP client. from the below screenshot; we can confirm we are seeing the secret **Hello World** from our environment variable.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-2.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-2.png)
 
 This works fine for our development environment, but when we run this in production, should we store this secret in something such as Azure Key Vault?
 
@@ -78,7 +78,7 @@ This is best practice and ensures that the secret is stored away from the applic
 
 To set this up, we first need to look at deploying our Azure Function into Azure instead of running locally; I will do this through VSCode.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-3.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-3.png)
 
 Now we have our Function App deployed, we need to confirm and set up the Function App to have a managed identity and provide the identity access to read secrets from a key vault.
 
@@ -86,7 +86,7 @@ To learn more about managed identities, look at the following link: [Managed ide
 
 To set up a managed identity for our Function, go to the Identity tab on the Function App, select **Yes**, and save.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-4.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-4.png)
 
 Now we will look to set up an Azure Key Vault to store our sensitive secrets. But first, what is Azure Key Vault?
 
@@ -96,11 +96,11 @@ _Azure Key Vault is a cloud service for securely storing and accessing secrets. 
 
 Once the Azure Key Vault has been created, click on secrets to create our first secret.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-5.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-5.png)
 
 We will create a secret called superSecret with a value of "myConnectionStringShouldBeHere!"
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-6.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-6.png)
 
 Now we need to give our Function App access to this secret. There are two ways we can provide access.
 
@@ -113,17 +113,17 @@ For our example, we will provide our managed identity with the RBAC role "Key Va
 
 The specific actions this role can do can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-7.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-7.png)
 
 Providing access to the Function App can be found below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-8.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-8.png)
 
 Once we have provided access to the Function App, we are almost done, but how do we get the application to retrieve the secret from Key Vault? This is where application settings and Key Vault references come in.
 
 Go back to the Function App and go to **Configuration** within the settings blade**.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-9.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-9.png)
 
 Let's add a new environment variable here called superSecret and use the built-in Key Vault reference functionality to point to our secret. The syntax for referencing a Key Vault resource is the following:
 
@@ -133,21 +133,21 @@ Let's add a new environment variable here called superSecret and use the built-i
 
 **Below is the correct configuration.**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-18.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-18.png)
 
 **Do not just create an environment variable and paste in the connection string value like this!**
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-19.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-19.png)
 
 To confirm this is working and the secret can be retrieved from the vault, Microsoft provides a green tick to confirm the reference is working, and the Function App has access to retrieve the secret.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-20.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-20.png)
 
 Now, we need to send an HTTP GET request to the Function App and confirm if it can return the environment variable value stored in Azure Key Vault.
 
 We should have a response which says "myConnectionStringShouldBeHere!
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-21.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-21.png)
 
 It's working!
 
@@ -164,7 +164,7 @@ AzureDiagnostics
 | render barchart
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/11/image-22.png)
+![](/images/blog/using-secrets-from-azure-key-vault-for-your-azure-functions/image-22.png)
 
 If this content was helpful, please feel free to connect with me on social media at
 

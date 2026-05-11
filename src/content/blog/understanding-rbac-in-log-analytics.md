@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Understanding access in Log Analytics Workspaces"
 description: "Sometimes customers will ask how we control log access in their Log Analytics Workspaces and ensure that only the correct users can access the logs for their resources.
 
@@ -12,7 +12,7 @@ canonicalUrl: "https://www.georgeollis.com/understanding-rbac-in-log-analytics/"
 
 # Understanding access in Log Analytics Workspaces
 
-![Understanding access in Log Analytics Workspaces](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2023/02/VWAN-Routing-12.png)
+![Understanding access in Log Analytics Workspaces](/images/blog/understanding-rbac-in-log-analytics/VWAN-Routing-12.png)
 
 Sometimes customers will ask how we control log access in their Log Analytics Workspaces and ensure that only the correct users can access the logs for their resources.
 
@@ -24,7 +24,7 @@ Firstly, there are two access modes when accessing logs in a workspace.
 
 *   **Workspace-context**: You can view all logs in the workspace for which you **have** permission. Queries in this mode are scoped to all data in all tables in the workspace. This access mode is used when logs are accessed with the workspace as the scope. An example can be seen below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-48.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-48.png)
 
 An example of a workspace being used as the scope.
 
@@ -32,23 +32,23 @@ An example of a workspace being used as the scope.
 
 It's important to understand that logs are only available in resource-context queries if they're associated with the relevant resource. To check this association, run a query and verify that the [\_ResourceId](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-standard-columns?ref=georgeollis.com#_resourceid) column is populated.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-49.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-49.png)
 
 An example of a resource being used as the scope.
 
 Our first demo in this blog will show this in place. We've got two administrators. One of our administrators should have full access to our workspace and see all the logs, whereas our other administrator only looks after a specific workload. A few diagrams can be seen below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/WorkspaceExample.png)
+![](/images/blog/understanding-rbac-in-log-analytics/WorkspaceExample.png)
 
 An example diagram of workspace-context. Our CompanyAdmin account will be able to scope the context to the workspace and see all the results for all resources.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/ResourceContentExample.png)
+![](/images/blog/understanding-rbac-in-log-analytics/ResourceContentExample.png)
 
 An example diagram of resource context. Our WorkloadAdmin account has read access to a single Azure SQL database. They won't be able to access the log analytics workspace and will be using resource context when viewing logs in the workspace. They will only see logs for the resources they have access.
 
 Let's go through each scenario. The user CompanyAdmin has reader permissions assigned to the log analytics workspace. We can view all the logs for all SQL servers\\databases reporting into this workspace. A basic query that demonstrates this is below. In this example, the scope is the workspace and workspace permissions are being used.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-50.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-50.png)
 
 ```
 AzureDiagnostics
@@ -59,7 +59,7 @@ AzureDiagnostics
 
 The following scenario is from the WorkloadAdmin perspective. This user only has read access on sqlserverworkload1, and although its logs are reporting to the same workspace, this user doesn't have RBAC permission on the workspace. This user has been assigned read access on the Azure SQL resource only. This is an example of resource context and resource permissions.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-51.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-51.png)
 
 ### Understanding access control modes
 
@@ -73,21 +73,21 @@ It's recommended to enable Azure RBAC for a user by removing them from workspace
 
 You can confirm which access control mode is used by going to the Log Analytics Workspace. On the overview page, you will see the access control mode configuration.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-52.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-52.png)
 
 If you want to change the access control mode, click on the properties tab, and you'll be able to change the configuration, as highlighted below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-53.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-53.png)
 
 Perhaps you want further granularity with RBAC, especially for tables that don't support resource-context mode, which is only for logs generated by resources and that send the \_ResourceId column to the workspace. We can create custom RBAC roles precisely for this.
 
 In our example, we want to ensure that only our SecurityAdmin user can access Azure Activity logs, but we want to ensure they cannot access resource logs. Let's see how we can do this. You can see the image below.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-54.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-54.png)
 
 Firstly, go to your subscription, select access controls, and create a new custom role. Our custom role will be called **Azure Activity Reader**.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-55.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-55.png)
 
 Go to the JSON tab, select edit and paste in the following content. **Note**: ensure you replace the subscription id with yours, and that the assignableScope includes the location of your workspaces.
 
@@ -117,7 +117,7 @@ Go to the JSON tab, select edit and paste in the following content. **Note**: en
 }
 ```
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-63.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-63.png)
 
 What do the actions actually do? Let's have a look.
 
@@ -131,23 +131,23 @@ This role will only limit what the user can query. If you wanted to provide full
 
 Click review and create. This custom role will now be created. Now go to the Log Analytics Workspace and click on access control, and select add a role.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-57.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-57.png)
 
 Find the role we created called Azure Activity Reader and select it, click next.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-58.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-58.png)
 
 Find our SecurityAdmin user and assign the role to the user. Click next and deploy the role.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-59.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-59.png)
 
 Log into the Azure Portal with the SecurtyAdmin user and select the Log Analytics Workspace. Let's see if we can view the data in the AzureActivity table.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-61.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-61.png)
 
 This appears to be working. We also know that data is being ingested in the AzureDiagnostics table - can we view it?
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2023/02/image-62.png)
+![](/images/blog/understanding-rbac-in-log-analytics/image-62.png)
 
 Looks like we can't view it! Exactly what we wanted.
 

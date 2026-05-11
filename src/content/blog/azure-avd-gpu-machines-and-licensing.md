@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Virtual Desktop GPU Licensing - NVv3 Series Overview"
 description: "This short blog will cover important information about GPU licenses, specifically around VDI (Virtual desktop infrastructure) scenarios and some things to look out for.
 
@@ -16,7 +16,7 @@ canonicalUrl: "https://www.georgeollis.com/azure-avd-gpu-machines-and-licensing/
 
 # Azure Virtual Desktop GPU Licensing - NVv3 Series Overview
 
-![Azure Virtual Desktop GPU Licensing - NVv3 Series Overview](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/12/VWAN-Routing-2.png)
+![Azure Virtual Desktop GPU Licensing - NVv3 Series Overview](/images/blog/azure-avd-gpu-machines-and-licensing/VWAN-Routing-2.png)
 
 This short blog will cover important information about GPU licenses, specifically around VDI (Virtual desktop infrastructure) scenarios and some things to look out for.
 
@@ -26,7 +26,7 @@ We will be exploring the NVv3-Series, a GPU-backed series used and recommended f
 
 The NVv3-series virtual machines are powered by [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf?ref=georgeollis.com) GPUs and NVIDIA GRID technology with Intel E5-2690 v4 CPUs and Intel Hyper-Threading Technology.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-77.png)
+![](/images/blog/azure-avd-gpu-machines-and-licensing/image-77.png)
 
 These virtual machines are targeted for GPU-accelerated graphics applications and virtual desktops where customers want to visualize their data, simulate results to view, work on CAD, or render and stream content. This compute series comes in three sizes.
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Microsoft Certified: Azure for SAP Workloads Specialty"
 description: "This is a quick review and study guide for the AZ-120 (Microsoft Certified: Azure for SAP Workloads Specialty).
 
@@ -14,7 +14,7 @@ canonicalUrl: "https://www.georgeollis.com/microsoft-certified-azure-for-sap-wor
 
 # Microsoft Certified: Azure for SAP Workloads Specialty
 
-![Microsoft Certified: Azure for SAP Workloads Specialty](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/11/Presentation1-3.png)
+![Microsoft Certified: Azure for SAP Workloads Specialty](/images/blog/microsoft-certified-azure-for-sap-workloads-specialty-study-guide-and-review/Presentation1-3-1.png)
 
 This is a quick review and study guide for the AZ-120 (Microsoft Certified: Azure for SAP Workloads Specialty).
 

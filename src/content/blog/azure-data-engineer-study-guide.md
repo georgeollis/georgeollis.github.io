@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Data Engineer - Study Guide"
 description: "I recently passed the Azure Data Engineer exam. This quick blog reviews the exam and what material I used to pass it.  The exam is all about data services within Azure, and a quick summary can be seen below:
 
@@ -13,7 +13,7 @@ canonicalUrl: "https://www.georgeollis.com/azure-data-engineer-study-guide/"
 
 # Azure Data Engineer - Study Guide
 
-![Azure Data Engineer - Study Guide](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/10/ppt4149.pptm-----AutoRecovered-2.png)
+![Azure Data Engineer - Study Guide](/images/blog/azure-data-engineer-study-guide/ppt4149.pptm-----AutoRecovered-2.png)
 
 I recently passed the Azure Data Engineer exam. This quick blog reviews the exam and what material I used to pass it.  The exam is all about data services within Azure, and a quick summary can be seen below:
 

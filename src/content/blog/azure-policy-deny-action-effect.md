@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Policy - Looking at the DenyAction Effect"
 description: "This blog will discuss the new Azure Policy effect currently in public preview called denyAction. I've only found out about this new effect from this YouTube video here that Microsoft posted.
 
@@ -12,7 +12,7 @@ canonicalUrl: "https://www.georgeollis.com/azure-policy-deny-action-effect/"
 
 # Azure Policy - Looking at the DenyAction Effect
 
-![Azure Policy - Looking at the DenyAction Effect](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/size/w960/2022/12/Screenshot-2022-12-04-190009-1.png)
+![Azure Policy - Looking at the DenyAction Effect](/images/blog/azure-policy-deny-action-effect/Screenshot-2022-12-04-190009-1.png)
 
 This blog will discuss the new Azure Policy effect currently in **public preview** called denyAction. I've only found out about this new effect from this YouTube video here that Microsoft posted.
 
@@ -126,19 +126,19 @@ Let's go ahead and try this out. You'll need to deploy a policy to test this; lu
 
 Once deployed, we should see the policy available to us.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-5.png)
+![](/images/blog/azure-policy-deny-action-effect/image-5.png)
 
 Click assign and go through the wizard; we will assign this policy to our subscription, which could also be assigned to a resource group, management group, etc.    
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-6.png)
+![](/images/blog/azure-policy-deny-action-effect/image-6.png)
 
 When reviewing the policy compliance status, the policy will be marked as compliant when the policy has been assigned. Still, eventually, it will show the status **protected** once the policy effect is generally available.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-7.png)
+![](/images/blog/azure-policy-deny-action-effect/image-7.png)
 
 Now let's go ahead and delete a storage account within this subscription.
 
-![](https://storage.ghost.io/c/2a/4d/2a4d6a2d-a5fd-4dcb-a296-fc77f5539cf5/content/images/2022/12/image-8.png)
+![](/images/blog/azure-policy-deny-action-effect/image-8.png)
 
 We can see that the storage account can't be deleted! This was attempted at the storage account resource; however, if we tried deleting the resource group instead, the behaviour would be the same.
 
