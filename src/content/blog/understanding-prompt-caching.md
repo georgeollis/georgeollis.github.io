@@ -148,8 +148,6 @@ This time we can see that 2,176 tokens were taken directly from the cache. Why t
 
 ## Why `cached_tokens` was 2,176 (the exact math)
 
-At first glance, this looks odd because my visible system prompt is around 2,182 tokens. The key point is that **`cached_tokens` is based on the full internal prompt**, not just the visible system prompt.
-
 In Foundry, the model input typically includes:
 
 - system instructions
@@ -198,3 +196,13 @@ That means:
 - the next 128-token block did not fully match, so counting stopped at 2,176
 
 This is normal and expected behavior.
+
+## Summary
+
+Prompt caching in Microsoft Foundry helps you reduce cost and improve response speed when requests share the same long prefix. To benefit from it, keep at least the first 1,024 tokens identical, structure prompts so stable content comes first, and monitor `cached_tokens` in responses to confirm real cache hits. If your workload is bursty, evaluate whether extended retention (`24h`) is available for your model.
+
+When applied well, prompt caching is one of the simplest optimizations you can make for production AI systems.
+
+## Thanks for reading
+
+Thanks for reading this post. I hope this made prompt caching clearer and gives you practical ideas you can apply in your own Foundry projects.
