@@ -22,7 +22,7 @@ export async function GET() {
       (post) => `
   <url>
     <loc>https://www.georgeollis.com/blog/${post.slug}/</loc>
-    <lastmod>${post.data.date.toISOString().split('T')[0]}</lastmod>
+    <lastmod>${(post.data.updatedDate ?? post.data.date).toISOString().split('T')[0]}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>`

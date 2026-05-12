@@ -6,12 +6,20 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  ogType?: string;
+  keywords?: string[];
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
   title = 'George Ollis',
   description = 'Cloud Architect and Kubestronaut with over 40 Microsoft certifications, specialising in Azure, apps, AI, and Microsoft Foundry.',
-  image = '/images/og-default.png'
+  image = '/images/og-default.png',
+  ogType = 'website',
+  keywords,
+  publishedTime,
+  modifiedTime
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -32,14 +40,19 @@ const isHomePage = Astro.url.pathname === '/';
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/jpeg" href="/images/profile-icon.jpg" />
     <link rel="apple-touch-icon" href="/images/profile-icon.jpg" />
+    <link rel="alternate" type="application/rss+xml" title="George Ollis" href="/rss.xml" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:site_name" content="George Ollis" />
+    <meta property="og:locale" content="en_GB" />
+    {ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
