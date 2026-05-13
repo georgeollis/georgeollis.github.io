@@ -135,6 +135,76 @@ const isHomePage = Astro.url.pathname === '/';
         renderMermaidBlocks();
       }
     </script>
+    <script is:inline>
+      (() => {
+        const setupImageZoom = () => {
+          const proseImages = document.querySelectorAll('.prose img');
+          if (!proseImages.length) return;
+
+          let lightbox = document.querySelector('[data-image-lightbox]');
+
+          if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.className = 'image-lightbox';
+            lightbox.setAttribute('data-image-lightbox', 'true');
+            lightbox.setAttribute('role', 'dialog');
+            lightbox.setAttribute('aria-modal', 'true');
+            lightbox.setAttribute('aria-label', 'Image preview');
+            lightbox.hidden = true;
+            lightbox.innerHTML = `
+              <button type="button" class="image-lightbox-close" aria-label="Close image preview">Close</button>
+              <img class="image-lightbox-image" alt="" />
+            `;
+            document.body.appendChild(lightbox);
+          }
+
+          const lightboxImage = lightbox.querySelector('.image-lightbox-image');
+          const closeButton = lightbox.querySelector('.image-lightbox-close');
+
+          if (!lightboxImage || !closeButton) return;
+
+          const closeLightbox = () => {
+            lightbox.classList.remove('is-open');
+            lightbox.hidden = true;
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+          };
+
+          const openLightbox = (img) => {
+            lightboxImage.src = img.currentSrc || img.src;
+            lightboxImage.alt = img.alt || 'Expanded image';
+            lightbox.hidden = false;
+            requestAnimationFrame(() => lightbox.classList.add('is-open'));
+          };
+
+          closeButton.addEventListener('click', closeLightbox);
+
+          lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+              closeLightbox();
+            }
+          });
+
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !lightbox.hidden) {
+              closeLightbox();
+            }
+          });
+
+          proseImages.forEach((img) => {
+            if (img.closest('a')) return;
+            img.dataset.zoomable = 'true';
+            img.addEventListener('click', () => openLightbox(img));
+          });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupImageZoom, { once: true });
+        } else {
+          setupImageZoom();
+        }
+      })();
+    </script>
     <div class="content-frame">
       <main class="site-shell" id="main-content">
         <slot />

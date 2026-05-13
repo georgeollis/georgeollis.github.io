@@ -913,13 +913,59 @@ h3 {
   height: auto;
   border-radius: 0;
   display: block;
-  border: 1px solid var(--line);
+  border: none;
   margin-inline: auto;
 }
 
-.article-shell .prose > p:has(> img):first-of-type,
-.article-shell .prose > figure:first-of-type {
+.prose img[data-zoomable='true'],
+.prose figure img[data-zoomable='true'] {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(10, 10, 10, 0.84);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.image-lightbox[hidden] {
   display: none;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+}
+
+.image-lightbox-image {
+  max-width: min(96vw, 1500px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #000000;
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.45);
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .prose table {
@@ -1013,5 +1059,16 @@ h3 {
     width: auto;
     padding: 0.28rem 0.7rem;
     font-size: 0.8rem;
+  }
+
+  .image-lightbox {
+    padding: 0.9rem;
+  }
+
+  .image-lightbox-close {
+    top: 0.7rem;
+    right: 0.7rem;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.86rem;
   }
 }
