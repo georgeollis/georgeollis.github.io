@@ -65,13 +65,109 @@ const isHomePage = Astro.url.pathname === '/';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics with Enhanced Tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EM8NE4J0K7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-EM8NE4J0K7');
+      
+      // Consent mode (privacy-friendly)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied'
+      });
+      
+      // GA4 config with debug mode and enhanced measurement
+      gtag('config', 'G-EM8NE4J0K7', {
+        'debug_mode': false,
+        'anonymize_ip': true,
+        'allow_google_signals': false,
+        'allow_ad_personalization_signals': false
+      });
+    </script>
+    
+    <!-- Enhanced Analytics Tracking -->
+    <script is:inline>
+      (() => {
+        const GA_ID = 'G-EM8NE4J0K7';
+        
+        // Track 404 pages
+        if (document.querySelector('[data-page-type="404"]') || document.title.includes('404')) {
+          gtag('event', 'page_not_found', {
+            'page_path': window.location.pathname,
+            'page_title': document.title
+          });
+        }
+        
+        // Track scroll depth for blog posts
+        if (document.querySelector('.prose')) {
+          let scrollPercentages = new Set();
+          window.addEventListener('scroll', () => {
+            const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            const roundedPercent = Math.floor(scrollPercent / 25) * 25;
+            
+            if (roundedPercent > 0 && !scrollPercentages.has(roundedPercent)) {
+              scrollPercentages.add(roundedPercent);
+              gtag('event', 'scroll', {
+                'scroll_depth': roundedPercent,
+                'page_title': document.title
+              });
+            }
+          });
+        }
+        
+        // Track time on page
+        const pageStartTime = Date.now();
+        window.addEventListener('beforeunload', () => {
+          const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+          gtag('event', 'page_engagement', {
+            'time_on_page_seconds': timeOnPage,
+            'page_title': document.title,
+            'page_path': window.location.pathname
+          });
+        });
+        
+        // Track outbound links
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a');
+          if (link && link.href && !link.href.includes(window.location.hostname)) {
+            gtag('event', 'click', {
+              'event_category': 'outbound',
+              'event_label': link.href,
+              'transport_type': 'beacon'
+            });
+          }
+        });
+        
+        // Tag blog posts with metadata
+        if (document.querySelector('article')) {
+          const title = document.querySelector('h1')?.textContent || 'Unknown';
+          const tags = Array.from(document.querySelectorAll('[class*="tag"]'))
+            .map(t => t.textContent)
+            .join(',') || 'untagged';
+          
+          gtag('config', GA_ID, {
+            'page_title': title,
+            'content_group': 'blog_post',
+            'custom_map': {
+              'dimension1': 'article_title',
+              'dimension2': 'article_tags'
+            },
+            'article_title': title,
+            'article_tags': tags
+          });
+        }
+        
+        // Update consent based on user preferences (if you add a consent banner later)
+        window.addEventListener('consent-updated', (e) => {
+          if (e.detail.analytics) {
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+          }
+        });
+      })();
     </script>
   </head>
   <body class={isHomePage ? 'page-home' : undefined}>
