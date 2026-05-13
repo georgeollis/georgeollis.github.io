@@ -9,7 +9,7 @@ tags:
 canonicalUrl: "https://www.georgeollis.com/understanding-prompt-caching/"
 ---
 
-![Understanding Prompt Caching in Microsoft Foundry](/images/blog/understanding-prompt-caching/image-3.png)
+![Understanding Prompt Caching in Microsoft Foundry](/images/blog/understanding-prompt-caching/overview.png)
 
 Hello everyone,
 
