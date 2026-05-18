@@ -72,9 +72,9 @@ const isHomePage = Astro.url.pathname === '/';
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Consent mode (privacy-friendly)
+      // Consent mode
       gtag('consent', 'default', {
-        'analytics_storage': 'denied',
+        'analytics_storage': 'granted',
         'ad_storage': 'denied'
       });
       
